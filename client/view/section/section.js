@@ -1,0 +1,3 @@
+//Template.section.rendered = function () {
+//
+//};

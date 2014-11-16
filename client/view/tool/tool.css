@@ -1,0 +1,22 @@
+#vied-toolbar {
+    height: 50px;
+    background-color: transparent;
+    width: 1170px;
+    margin: 0px auto;
+}
+
+#vied-toolbar ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+#vied-toolbar ul li{
+    display: inline;
+    float: left;
+    margin: 0 2px;
+}
+
+#vied-toolbar div.tool{
+    height: 50px;
+    width: 50px;
+}

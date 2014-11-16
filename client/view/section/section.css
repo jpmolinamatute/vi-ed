@@ -1,0 +1,44 @@
+section.sections{
+    position: absolute;
+    width: 1170px;
+    border-left:solid gray 1px;
+    border-right: solid gray 1px;
+    margin: 0 -15px;
+}
+
+div.divisors{
+    position: absolute;
+    width: 1170px;
+    height: 3px;
+    margin: 0 -15px;
+    background-color: black;
+}
+
+div.divisors div.div-left,
+div.divisors div.div-right{
+    width: 10px;
+    height: 21px;
+    background-color: black;
+    margin-top: -10px;
+}
+div.divisors div.div-left{
+    margin-left: -10px;
+    float: left;
+}
+
+div.divisors div.div-right{
+    margin-right: -10px;
+    float: right;
+}
+
+#vied-header{
+    background-color: yellow;
+}
+#vied-body{
+    background-color: blue;
+}
+
+#vied-footer{
+    background-color: red;
+}
+

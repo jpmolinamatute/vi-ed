@@ -1,0 +1,14 @@
+<template name="tool">
+    <div id="vied-toolbar">
+        <ul>
+            {{#each data}}
+                <li id="{{id}}">
+                    <div class="tools" data-type="{{type}}">
+                        <img src="{{src}}" alt="{{type}}" title="{{name}}">
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
