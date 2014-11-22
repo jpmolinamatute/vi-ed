@@ -17,13 +17,13 @@ div.divisors{
 }
 
 #vied-header{
-    background-color: yellow;
+    background: url(/section-header.png) center center no-repeat;
 }
 #vied-body{
-    background-color: blue;
+    background: url(/section-body.png) center center no-repeat;
 }
 
 #vied-footer{
-    background-color: red;
+    background: url(/section-footer.png) center center no-repeat;
 }
 

@@ -1,8 +1,16 @@
+"use strict";
+
 var setDroppable = function (sections) {
     sections.droppable({
         accept: "div.tools",
         drop: function (event, ui) {
-            console.log(ui.draggable.attr("data-type"));
+            var myTemplate = ui.draggable.attr("data-type");
+            var mySeccion = document.getElementById($(this).attr("id"));
+            if (typeof Template[myTemplate] === "undefined") {
+                console.error(myTemplate + " is undefined");
+            } else {
+                Blaze.render(Template[myTemplate], mySeccion);
+            }
         }
     });
 }

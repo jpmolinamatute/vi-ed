@@ -8,7 +8,8 @@
 #vied-toolbar ul {
     list-style-type: none;
     padding: 0px;
-    margin: 0px;
+    margin: 0px auto;
+    height: 49px;
 }
 #vied-toolbar ul li{
     display: inline;
