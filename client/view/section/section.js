@@ -1,3 +1,3 @@
-//Template.section.rendered = function () {
-//
-//};
+Template.section.rendered = function () {
+
+};

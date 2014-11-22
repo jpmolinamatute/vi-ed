@@ -1,12 +1,12 @@
 <template name="section">
     {{#each data}}
         <section id="{{id}}" class="sections" data-type="{{type}}">
-            <p>Hola!</p>
+            <div class="content">
+                
+            </div>
+            <div class="ui-resizable-handle ui-resizable-s divisors"></div>
         </section>
-        <div class="divisors" data-id="{{id}}">
-            <div class="div-left"></div>
-            <div class="div-right"></div>
-        </div>
+
     {{/each}}
 </template>
 
