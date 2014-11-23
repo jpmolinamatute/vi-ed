@@ -1,5 +1,14 @@
 <template name="elements">
-    <div id={{id}} class="element-container">
+    <div id={{id}} class="element-container" data-type="{{type}}">
         {{> UI.contentBlock}}
+        <div class="ui-resizable-handle ui-resizable-ne"></div>
+        <div class="ui-resizable-handle ui-resizable-n"></div>
+        <div class="ui-resizable-handle ui-resizable-nw"></div>
+        <div class="ui-resizable-handle ui-resizable-w"></div>
+        <div class="ui-resizable-handle ui-resizable-sw"></div>
+        <div class="ui-resizable-handle ui-resizable-s"></div>
+        <div class="ui-resizable-handle ui-resizable-se"></div>
+        <div class="ui-resizable-handle ui-resizable-e"></div>
+        <div class="element-draggable"></div>
     </div>
 </template>

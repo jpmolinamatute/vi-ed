@@ -1,5 +1,5 @@
 "use strict";
-
+var count = 0;
 var setDroppable = function (sections) {
     sections.droppable({
         accept: "div.tools",
@@ -9,7 +9,8 @@ var setDroppable = function (sections) {
             if (typeof Template[myTemplate] === "undefined") {
                 console.error(myTemplate + " is undefined");
             } else {
-                Blaze.render(Template[myTemplate], mySeccion);
+                Blaze.renderWithData(Template[myTemplate], {myid: count}, mySeccion);
+                count++;
             }
         }
     });
