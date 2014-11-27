@@ -1,5 +1,5 @@
 "use strict";
-var count = 0;
+
 var setDroppable = function (sections) {
     sections.droppable({
         accept: "div.tools",
@@ -9,8 +9,16 @@ var setDroppable = function (sections) {
             if (typeof Template[myTemplate] === "undefined") {
                 console.error(myTemplate + " is undefined");
             } else {
-                Blaze.renderWithData(Template[myTemplate], {myid: count}, mySeccion);
-                count++;
+                var data = {
+                    mydata: {
+                        id: elementCount,
+                        left: ui.position.left - $("#vied-editor").position().left,
+                        top: ui.position.top - $(this).position().top
+                    }
+                };
+
+                elementsObj[elementCount] = Blaze.renderWithData(Template[myTemplate], data, mySeccion);
+                elementCount++;
             }
         }
     });
@@ -39,5 +47,3 @@ Template.section.helpers({
         {id: "vied-footer", type: "footer"}
     ]
 });
-
-

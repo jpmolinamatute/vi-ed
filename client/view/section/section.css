@@ -8,12 +8,10 @@ section.sections{
 }
 
 div.divisors{
-    position: absolute;
-    width: 100%;
     height: 3px;
     bottom: 0px;
     background-color: black;
-
+    margin-bottom: 2px;
 }
 
 #vied-header{

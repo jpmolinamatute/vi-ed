@@ -1,4 +1,4 @@
 *****************************   BUG   *********************************
-@BUG: Fix position of "div.tool" when is dropped in a section
+@FIXME: Fix position of "div.tool" when is dropped in a section
 *****************************   TODO   *********************************
 @TODO: implement shadow to sections and editor when draging a div.tool
