@@ -1,5 +1,6 @@
 <template name="elements">
-    <div id={{data.id}} class="element-container" data-type="{{type}}" style="left:{{data.left}}px; top:{{data.top}}px">
+    <div id={{data.id}} class="element-container" data-type="{{type}}"
+         style="left:{{data.left}}px; top:{{data.top}}px; height: {{myheight}}px; width:{{mywidth}}px">
         {{> UI.contentBlock}}
         <div class="ui-resizable-handle ui-resizable-ne"></div>
         <div class="ui-resizable-handle ui-resizable-n"></div>

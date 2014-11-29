@@ -28,4 +28,16 @@ Template.elements.rendered = function () {
 };
 
 Template.elements.helpers({});
-Template.elements.events({});
+Template.elements.events({
+    'dblclick div.element-container div.element-draggable': function (event) {
+        var $element = $(event.currentTarget);
+
+        $element.css({
+            width: "0px",
+            height: "0px"
+        });
+
+        $element.closest("div.element-container").children("div[data-content='true']").focus();
+        // @TODO: re-enable "div.element-draggable" when element lose focus
+    }
+});
