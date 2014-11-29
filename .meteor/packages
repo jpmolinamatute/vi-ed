@@ -4,7 +4,8 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 ian:bootstrap-3
 mizzao:jquery-ui
 jquery
+insecure
+

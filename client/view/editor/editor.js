@@ -2,14 +2,12 @@
 Template.editor.helpers({});
 
 Template.editor.rendered = function () {
+    var $editor = $("#vied-editor");
     var position = $("#vied-toolbar").height();
-    var sections = $("#vied-editor").find("section.sections");
+    var sections = $editor.find("section.sections");
     var spaceWindow = $(window).height() - position;
-    $("#vied-editor").height(spaceWindow);
-    var height = (spaceWindow - 10) / sections.length;
-
+    $editor.height(spaceWindow);
+    $editor.css("top", position + "px");
+    var height = spaceWindow / sections.length;
     sections.height(height);
-    sections.each(function (key, value) {
-        $(value).css("top", position + "px");
-    });
 };

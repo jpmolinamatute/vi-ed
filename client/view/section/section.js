@@ -1,27 +1,40 @@
 "use strict";
-
 var setDroppable = function (sections) {
     sections.droppable({
-        accept: "div.tools",
-        drop: function (event, ui) {
-            var myTemplate = ui.draggable.attr("data-type");
-            var mySeccion = document.getElementById($(this).attr("id"));
-            if (typeof Template[myTemplate] === "undefined") {
-                console.error(myTemplate + " is undefined");
-            } else {
-                var data = {
-                    mydata: {
-                        id: elementCount,
-                        left: ui.position.left - $("#vied-editor").position().left,
-                        top: ui.position.top - $(this).position().top
-                    }
-                };
-
-                elementsObj[elementCount] = Blaze.renderWithData(Template[myTemplate], data, mySeccion);
-                elementCount++;
+            accept: "div.tools",
+            drop: function (event, ui) {
+                var myTemplate = ui.draggable.attr("data-type");
+                var mySeccion = $(this).attr("id");
+                if (typeof Template[myTemplate] === "undefined") {
+                    console.error(myTemplate + " is undefined");
+                } else {
+                    var element = {
+                        type: myTemplate,
+                        subtemplate: mySeccion,
+                        created: new Date()
+                    };
+                    var thisTop = $(this).offset().top;
+                    elementsDB.insert(element,
+                        function (error, id) {
+                            if (error) {
+                                throw ("Failed to write " + JSON.stringify(element) + " into DB", error);
+                            }
+                            if (id) {
+                                var data = {
+                                    mydata: {
+                                        id: id,
+                                        left: ui.offset.left - $("#vied-editor").offset().left,
+                                        top: ui.offset.top - thisTop
+                                    }
+                                };
+                                elementsObj[id] = Blaze.renderWithData(Template[myTemplate], data, $("#" + mySeccion)[0]);
+                            }
+                        });
+                }
             }
         }
-    });
+    )
+    ;
 }
 
 var setResizable = function (sections) {

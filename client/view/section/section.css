@@ -5,23 +5,21 @@ section.sections{
     border-right: solid gray 1px;
     margin: 0 -15px;
     height: 300px;
+    background-color: transparent;
 }
 
-div.divisors{
+section.sections div.divisors {
     height: 3px;
     bottom: 0px;
     background-color: black;
     margin-bottom: 2px;
 }
 
-#vied-header{
-    background: url(/section-header.png) center center no-repeat;
+section.sections div.cover {
+    height: 0px;
+    width: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: darkgrey;
 }
-#vied-body{
-    background: url(/section-body.png) center center no-repeat;
-}
-
-#vied-footer{
-    background: url(/section-footer.png) center center no-repeat;
-}
-

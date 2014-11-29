@@ -4,17 +4,15 @@ Template.tool.rendered = function () {
     tools.draggable({
         helper: "clone",
         revert: "invalid",
-        zIndex: 100
+        zIndex: 100,
+        start: function (event, ui) {
+            $("html, body").css("background-color", "darkgrey");
+        },
+        stop: function (event, ui) {
+            $("html, body").css("background-color", "white");
+        }
     });
-    //@TODO fix this!
-    //var myWidth = 0;
-    //tools.each(function (key, value) {
-    //    console.log(key, myWidth);
-    //    myWidth += $(value).outerWidth(true);
-    //});
-    //
-    //console.log(myWidth);
-    //$(this.find("ul")).width(myWidth);
+    $(this.find("ul")).width(53 * tools.length);
 };
 
 Template.tool.helpers({
