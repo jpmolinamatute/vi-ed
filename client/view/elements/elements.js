@@ -10,8 +10,10 @@ var setResizabble = function (element) {
         sw: $("div.ui-resizable-sw", element),
         nw: $("div.ui-resizable-nw", element)
     };
-
-    element.resizable({handles: hands});
+    // @FIXME: remove $() and element sinse isn't needed
+    element.resizable({
+        handles: hands
+    });
 };
 
 var setDraggable = function (element) {
