@@ -1,0 +1,11 @@
+<template name="user_bar">
+    {{#if currentUser}}
+        <div id="vied-login-bar">
+            {{#with viedUser}}
+                <span>Hello @{{services.twitter.screenName}}
+                    <button type="button"><img src="{{services.twitter.profile_image_url_https}}" alt="user logo"></button>
+                </span>
+            {{/with}}
+        </div>
+    {{/if}}
+</template>

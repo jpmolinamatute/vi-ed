@@ -1,14 +1,14 @@
 "use strict";
 var setResizabble = function (element) {
     var hands = {
-        n: $("div.ui-resizable-n", element),
-        e: $("div.ui-resizable-e", element),
-        s: $("div.ui-resizable-s", element),
-        w: $("div.ui-resizable-w", element),
-        ne: $("div.ui-resizable-ne", element),
-        se: $("div.ui-resizable-se", element),
-        sw: $("div.ui-resizable-sw", element),
-        nw: $("div.ui-resizable-nw", element)
+        n: "div.ui-resizable-n",
+        e: "div.ui-resizable-e",
+        s: "div.ui-resizable-s",
+        w: "div.ui-resizable-w",
+        ne: "div.ui-resizable-ne",
+        se: "div.ui-resizable-se",
+        sw: "div.ui-resizable-sw",
+        nw: "div.ui-resizable-nw"
     };
     // @FIXME: remove $() and element sinse isn't needed
     element.resizable({

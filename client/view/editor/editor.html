@@ -1,8 +1,12 @@
 <template name="editor">
-    <div id="vied-editor" class="container">
-        {{>section}}
-    </div>
-    <div id="vied-toolbar-holder">
-        {{>tool}}
-    </div>
+    {{#if currentUser}}
+        <div id="vied-editor" class="container">
+            {{>section}}
+        </div>
+        <div id="vied-toolbar-holder">
+            {{>tool}}
+        </div>
+    {{/if}}
 </template>
+
+<!-- @TODO: adapt editor to play in armony with new main_layout template -->

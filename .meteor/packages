@@ -7,5 +7,11 @@ meteor-platform
 ian:bootstrap-3
 mizzao:jquery-ui
 jquery
-insecure
+accounts-base
+accounts-password
+accounts-ui
+accounts-twitter
+oauth2
+accounts-google
+accounts-github
 

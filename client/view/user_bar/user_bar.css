@@ -1,0 +1,17 @@
+div#vied-login-bar{
+    height: 54px;
+    background-color: darkgrey;
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    top: 0;
+    width: 224px;
+}
+
+div#vied-login-bar img{
+    border: 1px solid black;
+}
+div#vied-login-bar button{
+    border: none;
+    background-color: transparent;
+}
