@@ -1,0 +1,41 @@
+div#vied-login {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: pink;
+}
+
+div#vied-login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -106px;
+    margin-top: -68px;
+    width: 212px;
+    height: 136px;
+}
+
+div#vied-login-container ul {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+div#vied-login-container button {
+    width: 212px;
+    font-weight: bold;
+}
+
+div#vied-login-container button.btn-twitter {
+    color: #55ACEE;
+}
+
+div#vied-login-container button.btn-google {
+    color: #dd4b39;
+}
+
+div#vied-login-container button.btn-facebook {
+    color: #3b5998;
+}

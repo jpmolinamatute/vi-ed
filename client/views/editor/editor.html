@@ -1,0 +1,10 @@
+<template name="editor">
+    <div id="vied-toolbar-holder">
+        {{>toolbar}}
+    </div>
+    <div id="vied-editor" class="container">
+        {{# each sections}}
+            {{> section _id=_id type=type}}
+        {{/each}}
+    </div>
+</template>

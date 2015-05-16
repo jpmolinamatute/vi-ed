@@ -1,4 +1,7 @@
-elementsDB = new Mongo.Collection("elements");
+/*global elementsDB: true*/
+/*global sectionsDB: true*/
+/*global pagesDB: true*/
 
-// @TODO: create subtemplate collection
-// @TODO: create template collection
+elementsDB = new Mongo.Collection("elements");
+sectionsDB = new Mongo.Collection("sections");
+pagesDB = new Mongo.Collection("pages");

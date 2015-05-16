@@ -1,0 +1,15 @@
+html,
+body,
+div#vied-main {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+div#vied-main {
+    background-color: #6DBDD6;
+    display: flex;
+    flex-direction: column;
+}

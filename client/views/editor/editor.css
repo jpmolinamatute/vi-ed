@@ -1,0 +1,11 @@
+#vied-toolbar-holder {
+    height: 30px;
+    width: 100%;
+    background-color: black;
+}
+
+#vied-editor {
+    position: relative;
+    background-color: red;
+    flex: 1;
+}

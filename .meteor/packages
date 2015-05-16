@@ -4,14 +4,20 @@
 # but you can also edit it by hand.
 
 meteor-platform
-ian:bootstrap-3
-mizzao:jquery-ui
 jquery
 accounts-base
-accounts-password
-accounts-ui
 accounts-twitter
 oauth2
-accounts-google
 accounts-github
 
+blaze
+iron:router
+service-configuration
+underscore
+accounts-facebook
+accounts-google
+oauth
+google
+twitter
+facebook
+github

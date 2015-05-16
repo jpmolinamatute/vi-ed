@@ -1,0 +1,10 @@
+<template name="section">
+    <section id="{{_id}}" class="sections" data-type="{{type}}">
+        {{# each myElements}}
+            {{> elements _id=_id type=type style=style}}
+        {{/each}}
+        <div class="ui-resizable-handle ui-resizable-s divisors"></div>
+    </section>
+</template>
+
+

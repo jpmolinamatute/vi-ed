@@ -1,0 +1,16 @@
+ul#vied-toolbar {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px auto;
+    height: 20px;
+    width: 185px;
+}
+
+ul#vied-toolbar li {
+    display: inline-block;
+}
+
+ul#vied-toolbar li div {
+    text-align: center;
+}
+
