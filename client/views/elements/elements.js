@@ -1,7 +1,6 @@
 /* global elementsDB:false*/
-function setResizabble(element) {
+function setResizabble(element, id) {
     "use strict";
-    // @FIXME: remove $() and element sinse isn't needed
     element.resizable({
         handles: {
             n: "div.ui-resizable-n",
@@ -12,16 +11,26 @@ function setResizabble(element) {
             se: "div.ui-resizable-se",
             sw: "div.ui-resizable-sw",
             nw: "div.ui-resizable-nw"
+        },
+        stop: function (event, ui) {
+            var width = ui.size.width + "px";
+            var height = ui.size.height + "px";
+            Meteor.call("elementUpsert", {_id: id}, {$set: {"style.width": width, "style.height": height}});
         }
     });
 }
 
-function setDraggable(element) {
+function setDraggable(element, id) {
     "use strict";
 
     element.draggable({
         containment: "parent",
-        handle: "div.element-draggable"
+        handle: "div.element-draggable",
+        stop: function (event, ui) {
+            var left = ui.position.left + "px";
+            var top = ui.position.top + "px";
+            Meteor.call("elementUpsert", {_id: id}, {$set: {"style.top": top, "style.left": left}});
+        }
     });
 }
 
@@ -29,24 +38,24 @@ Template.elements.rendered = function () {
     "use strict";
 
     var element = this.$("div.element-container");
-    setResizabble(element);
-    setDraggable(element);
+    setResizabble(element, this.data._id);
+    setDraggable(element, this.data._id);
 };
 
 Template.elements.helpers({
     getstyle: function (style) {
         "use strict";
         var myStyles = "";
-        var stylesKeys;
 
         if (typeof style === "object") {
-            stylesKeys = Object.keys(style);
-            $.each(stylesKeys, function (key, value) {
+            $.each(style, function (key, value) {
+
                 myStyles += key + ": " + value + "; ";
             });
         } else {
-            console.error("ERROR: no styles for"); //, this.data._id
+            console.error("ERROR: no styles for");
         }
+
         return myStyles;
     }
 });
@@ -62,7 +71,5 @@ Template.elements.events({
             height: "0px"
         });
 
-        $element.closest("div.element-container").children("div[data-content='true']").focus();
-        // @TODO: re-enable "div.element-draggable" when element lose focus
     }
 });

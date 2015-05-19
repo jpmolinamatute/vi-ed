@@ -3,6 +3,19 @@ div.element-container {
     position: absolute;
 }
 
+div.element-container > div.elemet-toolbar {
+    display: none;
+    position: absolute;
+    right: -25px;
+    height: 100%;
+    width: 25px;
+    background-color: blue;
+}
+
+div.element-container:hover > div.elemet-toolbar {
+    display: block;
+}
+
 div.element-container > div.element-draggable {
     position: absolute;
     top: 5px;

@@ -1,10 +1,8 @@
 <template name="elements">
     <div id={{_id}} class="element-container" data-type="{{type}}"
          style="{{getstyle style}}">
-        <p>{{type}}</p>
-
-        <p>{{_id}}</p>
-        <!--{{> Template.dynamic template=type}}-->
+        <div class="elemet-toolbar"></div>
+        {{> Template.dynamic template=type}}
         <div class="ui-resizable-handle ui-resizable-ne"></div>
         <div class="ui-resizable-handle ui-resizable-n"></div>
         <div class="ui-resizable-handle ui-resizable-nw"></div>
