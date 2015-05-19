@@ -35,7 +35,7 @@ div.element-container > div.ui-resizable-handle {
 }
 
 div.element-container > div.ui-resizable-ne {
-    top: 0px;
+    top: 0;
     left: 100%;
     margin-left: -3px;
     margin-top: -3px;
@@ -43,15 +43,15 @@ div.element-container > div.ui-resizable-ne {
 }
 
 div.element-container > div.ui-resizable-n {
-    top: 0px;
+    top: 0;
     left: 50%;
     margin-top: -3px;
     cursor: row-resize;
 }
 
 div.element-container > div.ui-resizable-nw {
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     margin-top: -3px;
     margin-left: -3px;
     cursor: nwse-resize;
@@ -59,28 +59,28 @@ div.element-container > div.ui-resizable-nw {
 
 div.element-container > div.ui-resizable-w {
     top: 50%;
-    left: 0px;
+    left: 0;
     margin-left: -3px;
     cursor: col-resize;
 }
 
 div.element-container > div.ui-resizable-sw {
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     margin-left: -3px;
     margin-bottom: -3px;
     cursor: nesw-resize;
 }
 
 div.element-container > div.ui-resizable-s {
-    bottom: 0px;
+    bottom: 0;
     left: 50%;
     margin-bottom: -3px;
     cursor: row-resize;
 }
 
 div.element-container > div.ui-resizable-se {
-    bottom: 0px;
+    bottom: 0;
     left: 100%;
     margin-bottom: -3px;
     margin-left: -3px;

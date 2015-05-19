@@ -10,16 +10,16 @@ section.sections {
 
 section.sections div.divisors {
     height: 3px;
-    bottom: 0px;
+    bottom: 0;
     background-color: black;
     margin-bottom: 2px;
 }
 
 section.sections div.cover {
-    height: 0px;
-    width: 0px;
+    height: 0;
+    width: 0;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     background-color: darkgrey;
 }
