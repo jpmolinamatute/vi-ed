@@ -1,11 +1,10 @@
 section.sections {
     position: relative;
-    width: 1170px;
+    width: 100%;
     border-left: solid gray 1px;
     border-right: solid gray 1px;
-    margin: 0 -15px;
     height: 300px;
-    background-color: transparent;
+    background-color: red;
 }
 
 section.sections div.divisors {

@@ -24,7 +24,7 @@ function setDraggable(element, id) {
     "use strict";
 
     element.draggable({
-        containment: "parent",
+        containment: "section.sections",
         handle: "div.element-draggable",
         stop: function (event, ui) {
             var left = ui.position.left + "px";
@@ -43,21 +43,7 @@ Template.elements.rendered = function () {
 };
 
 Template.elements.helpers({
-    getstyle: function (style) {
-        "use strict";
-        var myStyles = "";
 
-        if (typeof style === "object") {
-            $.each(style, function (key, value) {
-
-                myStyles += key + ": " + value + "; ";
-            });
-        } else {
-            console.error("ERROR: no styles for");
-        }
-
-        return myStyles;
-    }
 });
 
 Template.elements.events({

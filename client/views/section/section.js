@@ -5,6 +5,7 @@ function setDroppable($sections) {
     $sections.droppable({
         accept: "div.tools",
         drop: function (event, ui) {
+            console.log(ui.draggable);
             var type = ui.draggable.attr("data-type");
             if (typeof Template[type] === "undefined") {
                 console.error(type + " is undefined");

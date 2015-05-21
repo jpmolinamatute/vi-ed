@@ -6,15 +6,24 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-4 col-xs-4">
                 <div class="form-group">
                     <label for="vied-create-page">Create a Page</label>
                     <input type="text" class="form-control" id="vied-create-page" placeholder="Enter a name">
                 </div>
             </div>
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-4 col-xs-4">
                 <button type="button" class="btn btn-primary" id="create-page-id">Create</button>
             </div>
+            <div class="col-md-4 col-xs-4">
+                <select id="vied-pageslist" class="form-control">
+                    <option value="none" selected>Select a Page</option>
+                    {{# each pages}}
+                        <option value="{{_id}}">{{title}}</option>
+                    {{/ each}}
+                </select>
+            </div>
         </div>
+
     </div>
 </template>

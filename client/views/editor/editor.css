@@ -6,6 +6,8 @@
 
 #vied-editor {
     position: relative;
-    background-color: red;
+    background-color: green;
     flex: 1;
+    padding-right: 0;
+    padding-left: 0;
 }

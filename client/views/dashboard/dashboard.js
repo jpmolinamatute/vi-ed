@@ -1,5 +1,5 @@
 /* global pagesDB:false*/
-Session.setDefault("pageId", null);
+
 Template.dashboard.events({
     "click button#create-page-id": function (event) {
         "use strict";
@@ -16,8 +16,20 @@ Template.dashboard.events({
         if (title && data.owner) {
             data.title = title;
             pageId = pagesDB.insert(data);
-            Session.set("pageId", pageId);
-            Router.go("/editor");
+            Router.go("/editor/" + pageId);
         }
+    },
+    "change select#vied-pageslist": function (event) {
+        "use strict";
+        var $select = $(event.currentTarget);
+        Router.go("/editor/" + $select.val());
+    }
+});
+
+Template.dashboard.helpers({
+    pages: function () {
+        "use strict";
+
+        return pagesDB.find().fetch();
     }
 });
