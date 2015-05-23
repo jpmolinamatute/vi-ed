@@ -33,27 +33,30 @@ function setDroppable($sections) {
     });
 }
 
-function setResizable(sections) {
+function setResizable($sections, id) {
     "use strict";
 
-    sections.resizable({
-        handles: {s: "div.divisors"}
+    $sections.resizable({
+        handles: {s: "div.divisors"},
+        stop: function (event, ui) {
+            var height = ui.size.height + "px";
+            Meteor.call("sectionUpsert", {_id: id}, {$set: {"style.height": height}});
+        }
     });
 }
 
-Template.section.rendered = function () {
+Template.section.onRendered(function () {
     "use strict";
 
     var $sections = this.$("section.sections");
-    setResizable($sections);
+    setResizable($sections, this.data._id);
     setDroppable($sections);
-};
+});
 
 Template.section.helpers({
     myElements: function () {
         "use strict";
 
-        var myId = this._id;
-        return elementsDB.find({sectionID: myId}).fetch();
+        return elementsDB.find({sectionID: this._id, shown: true}).fetch();
     }
 });

@@ -29,7 +29,8 @@ Template.dashboard.events({
 Template.dashboard.helpers({
     pages: function () {
         "use strict";
-
+        pagesDB.find().fetch();
+        console.log(pagesDB.find().fetch());
         return pagesDB.find().fetch();
     }
 });

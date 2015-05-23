@@ -1,4 +1,4 @@
-/* global elementsDB:false*/
+
 function setResizabble(element, id) {
     "use strict";
     element.resizable({
@@ -34,20 +34,18 @@ function setDraggable(element, id) {
     });
 }
 
-Template.elements.rendered = function () {
+Template.elements.onRendered(function () {
     "use strict";
 
     var element = this.$("div.element-container");
     setResizabble(element, this.data._id);
     setDraggable(element, this.data._id);
-};
-
-Template.elements.helpers({
-
 });
 
+Template.elements.helpers({});
+
 Template.elements.events({
-    'dblclick div.element-container div.element-draggable': function (event) {
+    "dblclick div.element-container div.element-draggable": function (event) {
         "use strict";
 
         var $element = $(event.currentTarget);
@@ -57,5 +55,10 @@ Template.elements.events({
             height: "0px"
         });
 
+    },
+    "click div.element-container div.element-toolbar button.remove": function () {
+        "use strict";
+
+        Meteor.call("elementUpsert", {_id: this._id}, {$set: {shown: false}});
     }
 });

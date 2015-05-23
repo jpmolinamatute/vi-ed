@@ -1,7 +1,11 @@
 <template name="elements">
     <div id={{_id}} class="element-container" data-type="{{type}}"
          style="{{getstyle style}}">
-        <div class="elemet-toolbar"></div>
+        <div class="element-toolbar">
+            <button type="button" class="btn btn-primary btn-xs remove">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
         {{> Template.dynamic template=type}}
         <div class="ui-resizable-handle ui-resizable-ne"></div>
         <div class="ui-resizable-handle ui-resizable-n"></div>

@@ -3,16 +3,16 @@ div.element-container {
     position: absolute;
 }
 
-div.element-container > div.elemet-toolbar {
+div.element-container > div.element-toolbar {
     display: none;
     position: absolute;
-    right: -25px;
+    right: -22px;
     height: 100%;
-    width: 25px;
-    background-color: blue;
+    width: 22px;
+    background-color: transparent;
 }
 
-div.element-container:hover > div.elemet-toolbar {
+div.element-container:hover > div.element-toolbar {
     display: block;
 }
 
