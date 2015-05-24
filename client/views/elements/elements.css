@@ -6,11 +6,17 @@ div.element-container {
 div.element-container > div.element-toolbar {
     display: none;
     position: absolute;
-    right: -22px;
+    right: -24px;
     height: 100%;
-    width: 22px;
+    width: 24px;
     background-color: transparent;
 }
+
+div.element-container > div.element-toolbar > button.btn-xs {
+    height: 24px;
+    width: 24px;
+}
+
 
 div.element-container:hover > div.element-toolbar {
     display: block;
