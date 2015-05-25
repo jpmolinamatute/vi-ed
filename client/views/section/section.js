@@ -1,4 +1,6 @@
 /* global elementsDB: false*/
+/* global sectionsDB: false*/
+
 function setDroppable($sections) {
     "use strict";
 
@@ -39,7 +41,7 @@ function setResizable($sections, id) {
         handles: {s: "div.divisors"},
         stop: function (event, ui) {
             var height = ui.size.height + "px";
-            Meteor.call("sectionUpsert", {_id: id}, {$set: {"style.height": height}});
+            sectionsDB.update({_id: id}, {$set: {"style.height": height}});
         }
     });
 }
@@ -57,5 +59,10 @@ Template.section.helpers({
         "use strict";
 
         return elementsDB.find({sectionID: this._id, shown: true}).fetch();
+    },
+    data: function () {
+        "use strict";
+
+        return sectionsDB.findOne({_id: this._id});
     }
 });

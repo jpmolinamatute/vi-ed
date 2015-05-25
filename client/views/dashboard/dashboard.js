@@ -1,20 +1,20 @@
 /* global pagesDB:false*/
 
 Template.dashboard.events({
-    "click button#create-page-id": function (event) {
+    "click button#create-page-id": function () {
         "use strict";
 
-        var title = $("input#vied-create-page").val();
         var pageId;
         var data = {
+            title: $("input#vied-create-page").val(),
             owner: Meteor.userId(),
             created: new Date(),
             category: null,
-            sharedWith: []
+            sharedWith: [],
+            style: {}
         };
 
-        if (title && data.owner) {
-            data.title = title;
+        if (data.title && data.owner) {
             pageId = pagesDB.insert(data);
             Router.go("/editor/" + pageId);
         }
@@ -30,7 +30,6 @@ Template.dashboard.helpers({
     pages: function () {
         "use strict";
         pagesDB.find().fetch();
-        console.log(pagesDB.find().fetch());
-        return pagesDB.find().fetch();
+        return pagesDB.find({}, {fields: {title: 1}}).fetch();
     }
 });

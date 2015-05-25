@@ -16,7 +16,7 @@ function setResizabble(element, id) {
         stop: function (event, ui) {
             var width = ui.size.width + "px";
             var height = ui.size.height + "px";
-            Meteor.call("elementUpsert", {_id: id}, {$set: {"style.width": width, "style.height": height}});
+            elementsDB.update({_id: id}, {$set: {"style.width": width, "style.height": height}});
         }
     });
 }
@@ -30,7 +30,7 @@ function setDraggable(element, id) {
         stop: function (event, ui) {
             var left = ui.position.left + "px";
             var top = ui.position.top + "px";
-            Meteor.call("elementUpsert", {_id: id}, {$set: {"style.top": top, "style.left": left}});
+            elementsDB.update({_id: id}, {$set: {"style.top": top, "style.left": left}});
         }
     });
 }
@@ -74,7 +74,7 @@ Template.elements.events({
     "click div.element-container div.element-toolbar button.remove": function () {
         "use strict";
 
-        Meteor.call("elementUpsert", {_id: this._id}, {$set: {shown: false}});
+        elementsDB.update({_id: this._id}, {$set: {shown: false}});
     },
     "click div.element-container div.element-toolbar button.copy": function () {
         "use strict";
@@ -99,7 +99,6 @@ Template.elements.events({
 
     }
 });
-
 
 Template.elements.onDestroyed(function () {
     "use strict";

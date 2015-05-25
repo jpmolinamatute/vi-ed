@@ -6,7 +6,12 @@ Router.route("/editor/:_id", function () {
 
     if (this.ready()) {
         if (this.params._id) {
-            this.render("editor");
+            if (pagesDB.find({_id: this.params._id}).count()) {
+                this.render("editor");
+            } else {
+                this.render("notfound");
+            }
+
         } else {
             this.redirect("/dashboard");
         }
@@ -16,6 +21,8 @@ Router.route("/editor/:_id", function () {
     }
 });
 
+
+Router.route("/editor");
 
 Router.route("/dashboard", function () {
     "use strict";

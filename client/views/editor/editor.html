@@ -2,9 +2,10 @@
     <div id="vied-toolbar-holder">
         {{>toolbar}}
     </div>
-    <div id="vied-editor" class="container">
+    <div id="vied-editor" style="{{getstyle sectionStyle}}">
         {{# each sections}}
-            {{> section _id=_id type=type style=style}}
+            {{> section _id=_id}}
         {{/each}}
     </div>
+
 </template>
