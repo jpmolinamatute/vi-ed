@@ -38,9 +38,9 @@ var accounts = [
         "facebook": [
             {service: "facebook"},
             {
-                clientId: null,
+                appId: 831269770256101,
                 loginStyle: "popup",
-                secret: null,
+                secret: "471c6fbabae870a95277db3c6015fa4d",
                 service: "facebook"
             }
         ]
@@ -48,13 +48,13 @@ var accounts = [
 ];
 
 
-//_.each(accounts, function (value) {
-//    "use strict";
-//
-//    var service = Object.keys(value)[0];
-//    var query = value[service][0];
-//    var update = value[service][1];
-//    var id = ServiceConfiguration.configurations.upsert(query, update, {upsert: true});
-//    console.log(id);
-//});
+_.each(accounts, function (value) {
+    "use strict";
+
+    var service = Object.keys(value)[0];
+    var query = value[service][0];
+    var update = value[service][1];
+    var id = ServiceConfiguration.configurations.upsert(query, update, {upsert: true});
+    console.log(id);
+});
 
