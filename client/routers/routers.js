@@ -1,7 +1,15 @@
+/* global pagesDB: false*/
+
+Router.route("/", function () {
+    "use strict";
+    this.redirect("/dashboard");
+});
+
 Router.route("/editor/:_id", function () {
     "use strict";
     this.subscribe("pages");
     this.subscribe("sections");
+    this.subscribe("eDefaults");
     this.subscribe("elements").wait();
 
     if (this.ready()) {
@@ -20,7 +28,6 @@ Router.route("/editor/:_id", function () {
         this.render("loading");
     }
 });
-
 
 Router.route("/editor");
 

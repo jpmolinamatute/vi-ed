@@ -1,5 +1,12 @@
 /* global elementsDB: false*/
 /* global sectionsDB: false*/
+/* global eDefaultsDB: false*/
+
+function getElementDefault(id) {
+    "use strict";
+
+    return eDefaultsDB.findOne({"_id": id});
+}
 
 function setDroppable($sections) {
     "use strict";
@@ -13,6 +20,7 @@ function setDroppable($sections) {
             } else {
                 var top = (ui.position.top - $sections.offset().top) + "px";
                 var left = (ui.position.left - $sections.offset().left) + "px";
+                var defaultValue = getElementDefault(type);
                 var element = {
                     type: type,
                     sectionID: $sections.attr("id"),
@@ -20,14 +28,13 @@ function setDroppable($sections) {
                     shown: true,
                     owner: Meteor.userId(),
                     style: {
-                        width: "200px",
-                        height: "200px",
+                        width: defaultValue.style.width,
+                        height: defaultValue.style.height,
                         top: top,
                         left: left,
                         "z-index": "1"
                     }
                 };
-
                 elementsDB.insert(element);
             }
         }

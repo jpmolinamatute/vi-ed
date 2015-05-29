@@ -1,6 +1,7 @@
 /*global elementsDB: false*/
 /*global sectionsDB: false*/
 /*global pagesDB: false*/
+/*global eDefaultsDB: false*/
 
 var opt = {
     insert: function (userId) {
@@ -56,4 +57,9 @@ Meteor.publish("pages", function () {
         return pagesDB.find({owner: this.userId});
     }
 
+});
+
+Meteor.publish("eDefaults", function () {
+    "use strict";
+    return eDefaultsDB.find();
 });

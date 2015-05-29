@@ -97,6 +97,12 @@ Template.elements.events({
             console.warn("There is not section below");
         }
 
+    },
+    "click div.element-container div.element-toolbar button.options": function () {
+        "use strict";
+
+        var $optContainer = $("div#opt-container");
+        $optContainer.css("display", "block");
     }
 });
 

@@ -9,7 +9,6 @@ section.sections > div.section-body {
     position: relative;
     border-left: solid gray 1px;
     border-right: solid gray 1px;
-    background-color: red;
 }
 
 section.sections div.divisors {

@@ -17,7 +17,6 @@ div.element-container > div.element-toolbar > button.btn-xs {
     width: 24px;
 }
 
-
 div.element-container:hover > div.element-toolbar {
     display: block;
 }

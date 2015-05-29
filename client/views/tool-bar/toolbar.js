@@ -1,26 +1,21 @@
-Template.toolbar.rendered = function () {
+Template.toolbar.onRendered(function () {
     "use strict";
     var tools = this.$("div.tools");
     tools.draggable({
         helper: "clone",
         revert: "invalid",
         zIndex: 100,
-        start: function (event, ui) {
+        start: function () {
             $("div#vied-main").css("background-color", "darkgrey");
         },
-        stop: function (event, ui) {
+        stop: function () {
             $("div#vied-main").css("background-color", "#6DBDD6");
         }
     });
-};
+});
 
 Template.toolbar.helpers({
     data: [
-        {
-            type: "container",
-            img: "fa-square-o",
-            label: "Container"
-        },
         {
             type: "anchor",
             img: "fa-anchor",
