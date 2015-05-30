@@ -52,7 +52,7 @@ function setResizable($sections, id) {
     "use strict";
 
     $sections.resizable({
-        handles: {s: "div.divisors"},
+        handles: {s: "div.ui-resizable-s"},
         stop: function (event, ui) {
             var height = ui.size.height + "px";
             sectionsDB.update({_id: id}, {$set: {"style.height": height}});

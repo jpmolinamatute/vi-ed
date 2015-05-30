@@ -1,5 +1,7 @@
 /* global elementsDB:false*/
 
+Session.setDefault("element-opt", null);
+
 function setResizabble($element, id) {
     "use strict";
     $element.resizable({
@@ -113,6 +115,9 @@ Template.elements.events({
 
         var $optContainer = $("div#opt-container");
         event.stopPropagation();
+
+        console.log(this);
+
         $optContainer.css("display", "block");
     }
 });

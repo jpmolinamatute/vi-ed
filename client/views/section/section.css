@@ -1,6 +1,5 @@
 section.sections {
-    width: 100%;
-
+    position: relative;
 }
 
 section.sections > div.section-body {
@@ -11,11 +10,15 @@ section.sections > div.section-body {
     border-right: solid gray 1px;
 }
 
-section.sections div.divisors {
-    height: 3px;
+section.sections > div.ui-resizable-s {
+    position: absolute;
+    height: 6px;
     bottom: 0;
+    right: 0;
+    left: 0;
+    margin-bottom: -3px;
     background-color: black;
-    margin-bottom: 2px;
+    cursor: row-resize;
 }
 
 section.sections div.cover {

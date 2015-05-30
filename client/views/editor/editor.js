@@ -1,6 +1,18 @@
 /* global sectionsDB:false*/
 /* global pagesDB:false*/
 
+function closeOptContainer() {
+    "use strict";
+    var $optContainer = $("div#opt-container");
+    var elementOpt = Session.get("element-opt");
+    $optContainer.css("display", "none");
+
+    if (elementOpt) {
+        Blaze.remove(elementOpt);
+    }
+
+}
+
 Template.editor.helpers({
     sections: function () {
         "use strict";
@@ -67,12 +79,12 @@ Template.registerHelper("getstyle", function (style) {
 Template.editor.events({
     "click button#opt-close": function () {
         "use strict";
-        var $optContainer = $("div#opt-container");
-        $optContainer.css("display", "none");
+
+        closeOptContainer();
     },
     "click div#opt-container": function (event) {
         "use strict";
 
-        $(event.currentTarget).css("display", "none");
+        closeOptContainer();
     }
 });
