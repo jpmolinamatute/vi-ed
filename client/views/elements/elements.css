@@ -1,5 +1,5 @@
 div.element-container {
-    border: 1px black solid;
+    border: black 1px solid;
     position: absolute;
 }
 
@@ -21,35 +21,43 @@ div.element-container:hover > div.element-toolbar {
     display: block;
 }
 
+/*div.element-active*/
+
 div.element-container > div.element-draggable {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    left: 5px;
-    bottom: 5px;
-    background-color: transparent;
+    top: 3px;
+    right: 3px;
+    left: 3px;
+    bottom: 3px;
+    /*background-color: transparent;*/
     cursor: move;
+    background-color: red;
 }
 
 div.element-container > div.ui-resizable-handle {
     position: absolute;
-    display: block;
-    width: 5px;
-    height: 5px;
     background-color: black;
+}
+
+div.element-active div.ui-resizable-handle {
+    background-color: yellow;
 }
 
 div.element-container > div.ui-resizable-ne {
     top: 0;
-    left: 100%;
-    margin-left: -3px;
+    right: 0;
+    height: 6px;
+    width: 6px;
+    margin-right: -3px;
     margin-top: -3px;
     cursor: nesw-resize;
 }
 
 div.element-container > div.ui-resizable-n {
     top: 0;
-    left: 50%;
+    left: 3px;
+    right: 3px;
+    height: 6px;
     margin-top: -3px;
     cursor: row-resize;
 }
@@ -57,13 +65,17 @@ div.element-container > div.ui-resizable-n {
 div.element-container > div.ui-resizable-nw {
     top: 0;
     left: 0;
+    width: 6px;
+    height: 6px;
     margin-top: -3px;
     margin-left: -3px;
     cursor: nwse-resize;
 }
 
 div.element-container > div.ui-resizable-w {
-    top: 50%;
+    width: 6px;
+    top: 3px;
+    bottom: 3px;
     left: 0;
     margin-left: -3px;
     cursor: col-resize;
@@ -74,27 +86,35 @@ div.element-container > div.ui-resizable-sw {
     left: 0;
     margin-left: -3px;
     margin-bottom: -3px;
+    width: 6px;
+    height: 6px;
     cursor: nesw-resize;
 }
 
 div.element-container > div.ui-resizable-s {
     bottom: 0;
-    left: 50%;
+    left: 3px;
+    right: 3px;
+    height: 6px;
     margin-bottom: -3px;
     cursor: row-resize;
 }
 
 div.element-container > div.ui-resizable-se {
     bottom: 0;
-    left: 100%;
+    right: 0;
+    width: 6px;
+    height: 6px;
     margin-bottom: -3px;
-    margin-left: -3px;
+    margin-right: -3px;
     cursor: nwse-resize;
 }
 
 div.element-container > div.ui-resizable-e {
-    top: 50%;
-    left: 100%;
-    margin-left: -3px;
+    top: 3px;
+    bottom: 3px;
+    right: 0;
+    width: 6px;
+    margin-right: -3px;
     cursor: col-resize;
 }

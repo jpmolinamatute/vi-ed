@@ -5,7 +5,7 @@
 function getElementDefault(id) {
     "use strict";
 
-    return eDefaultsDB.findOne({"_id": id});
+    return eDefaultsDB.findOne({"element": id});
 }
 
 function setDroppable($sections) {
@@ -27,6 +27,7 @@ function setDroppable($sections) {
                     created: new Date(),
                     shown: true,
                     owner: Meteor.userId(),
+                    active: true,
                     style: {
                         width: defaultValue.style.width,
                         height: defaultValue.style.height,
@@ -35,6 +36,12 @@ function setDroppable($sections) {
                         "z-index": "1"
                     }
                 };
+
+                if (defaultValue.data) {
+                    element.data = defaultValue.data;
+                }
+                var currentActive = $("div#vied-editor").find("div.element-active").attr("id");
+                elementsDB.update({"_id": currentActive}, {"$set": {"active": false}});
                 elementsDB.insert(element);
             }
         }
@@ -71,5 +78,14 @@ Template.section.helpers({
         "use strict";
 
         return sectionsDB.findOne({_id: this._id});
+    }
+});
+
+Template.section.events({
+    "click section.sections": function () {
+        "use strict";
+
+        var currentActive = $("div#vied-editor").find("div.element-active").attr("id");
+        elementsDB.update({"_id": currentActive}, {"$set": {"active": false}});
     }
 });

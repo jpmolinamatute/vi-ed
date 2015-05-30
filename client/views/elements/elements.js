@@ -1,8 +1,8 @@
 /* global elementsDB:false*/
 
-function setResizabble(element, id) {
+function setResizabble($element, id) {
     "use strict";
-    element.resizable({
+    $element.resizable({
         handles: {
             n: "div.ui-resizable-n",
             e: "div.ui-resizable-e",
@@ -20,6 +20,7 @@ function setResizabble(element, id) {
         }
     });
 }
+
 
 function setDraggable(element, id) {
     "use strict";
@@ -60,37 +61,46 @@ Template.elements.onRendered(function () {
 Template.elements.helpers({});
 
 Template.elements.events({
+    "click div.element-container div.element-draggable": function (event) {
+        "use strict";
+
+        var currentActive = $("div#vied-editor").find("div.element-active").attr("id");
+        event.stopPropagation();
+        elementsDB.update({"_id": currentActive}, {"$set": {"active": false}});
+        elementsDB.update({"_id": this._id}, {"$set": {"active": true}});
+    },
     "dblclick div.element-container div.element-draggable": function (event) {
         "use strict";
 
         var $element = $(event.currentTarget);
-
+        event.stopPropagation();
         $element.css({
             width: "0px",
             height: "0px"
         });
 
     },
-    "click div.element-container div.element-toolbar button.remove": function () {
+    "click div.element-container div.element-toolbar button.remove": function (event) {
         "use strict";
-
+        event.stopPropagation();
         elementsDB.update({_id: this._id}, {$set: {shown: false}});
     },
-    "click div.element-container div.element-toolbar button.copy": function () {
+    "click div.element-container div.element-toolbar button.copy": function (event) {
         "use strict";
 
         var element = elementsDB.findOne({_id: this._id});
         var left = parseInt(element.style.left, 10) * 2;
+        event.stopPropagation();
         element.style.left = left + "px";
         delete element._id;
         elementsDB.insert(element);
     },
-    "click div.element-container div.element-toolbar button.move": function () {
+    "click div.element-container div.element-toolbar button.move": function (event) {
         "use strict";
 
         var section = elementsDB.findOne({_id: this._id}, {fields: {sectionID: 1}}).sectionID;
         var $next = $("section#" + section).next("section.sections");
-
+        event.stopPropagation();
         if ($next.length) {
             elementsDB.update({_id: this._id}, {$set: {sectionID: $next.attr("id")}});
         } else {
@@ -98,10 +108,11 @@ Template.elements.events({
         }
 
     },
-    "click div.element-container div.element-toolbar button.options": function () {
+    "click div.element-container div.element-toolbar button.options": function (event) {
         "use strict";
 
         var $optContainer = $("div#opt-container");
+        event.stopPropagation();
         $optContainer.css("display", "block");
     }
 });

@@ -3,7 +3,7 @@
         <section id="{{_id}}" class="sections" data-type="{{type}}" style="{{getstyle style}}">
             <div class="section-body {{#if fullwidth}}container-fluid{{else}}container{{/if}}">
                 {{# each myElements}}
-                    {{> elements _id=_id type=type style=style}}
+                    {{> elements _id=_id type=type style=style active=active}}
                 {{/each}}
             </div>
             <div class="ui-resizable-handle ui-resizable-s divisors"></div>
