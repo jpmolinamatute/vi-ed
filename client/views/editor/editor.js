@@ -63,3 +63,16 @@ Template.registerHelper("getstyle", function (style) {
 
     return myStyles;
 });
+
+Template.editor.events({
+    "click button#opt-close": function () {
+        "use strict";
+        var $optContainer = $("div#opt-container");
+        $optContainer.css("display", "none");
+    },
+    "click div#opt-container": function (event) {
+        "use strict";
+
+        $(event.currentTarget).css("display", "none");
+    }
+});

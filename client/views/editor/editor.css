@@ -34,3 +34,12 @@ div#element-opt {
     margin-left: -200px;
     background-color: white;
 }
+
+button#opt-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+}
