@@ -21,6 +21,13 @@ var opt = {
     }
 };
 
+eDefaultsDB.allow({
+    insert: function (userId) {
+        "use strict";
+
+        return userId;
+    }
+});
 
 elementsDB.allow(opt);
 sectionsDB.allow(opt);
