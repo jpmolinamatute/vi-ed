@@ -1,6 +1,8 @@
 /* global sectionsDB:false*/
 /* global pagesDB:false*/
 /* global elementOpt: true*/
+/* global eDefaultsDB: false*/
+
 
 elementOpt = null;
 
@@ -13,7 +15,6 @@ function closeOptContainer() {
     if (elementOpt) {
         Blaze.remove(elementOpt);
         elementOpt = null;
-        console.log("Removed?");
     }
 
 }
@@ -91,5 +92,48 @@ Template.editor.events({
         "use strict";
 
         closeOptContainer();
+    }
+});
+
+Template.editor.onRendered(function () {
+    "use strict";
+
+    var counter = eDefaultsDB.find().count();
+
+    if (counter === 0) {
+        eDefaultsDB.insert([
+                {
+                    "_id": {"$oid": "556a1d1fa8303de3e37cc563"},
+                    "data": {"videoID": "yKC6XmsLWVQ"},
+                    "element": "video",
+                    "style": {"height": "270px", "width": "480px"}
+                },
+                {
+                    "_id": {"$oid": "556a1d1fa8303de3e37cc564"},
+                    "element": "map",
+                    "style": {"height": "200px", "width": "200px"}
+                },
+                {
+                    "_id": {"$oid": "556a1d1fa8303de3e37cc565"},
+                    "element": "texteditor",
+                    "style": {"height": "200px", "width": "500px"}
+                },
+                {
+                    "_id": {"$oid": "556a1d1fa8303de3e37cc566"},
+                    "element": "image",
+                    "style": {"height": "300px", "width": "300px"}
+                },
+                {
+                    "_id": {"$oid": "556a1d1fa8303de3e37cc567"},
+                    "element": "anchor",
+                    "style": {"height": "50px", "width": "50px"}
+                },
+                {
+                    "_id": {"$oid": "556a1d1fa8303de3e37cc568"},
+                    "element": "shape",
+                    "style": {"height": "200px", "width": "200px"}
+                }
+            ]
+        );
     }
 });
