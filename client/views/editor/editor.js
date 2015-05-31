@@ -1,14 +1,19 @@
 /* global sectionsDB:false*/
 /* global pagesDB:false*/
+/* global elementOpt: true*/
+
+elementOpt = null;
 
 function closeOptContainer() {
     "use strict";
     var $optContainer = $("div#opt-container");
-    var elementOpt = Session.get("element-opt");
+
     $optContainer.css("display", "none");
 
     if (elementOpt) {
         Blaze.remove(elementOpt);
+        elementOpt = null;
+        console.log("Removed?");
     }
 
 }

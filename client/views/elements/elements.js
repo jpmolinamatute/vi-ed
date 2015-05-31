@@ -1,6 +1,6 @@
 /* global elementsDB:false*/
+/* global elementOpt: true*/
 
-Session.setDefault("element-opt", null);
 
 function setResizabble($element, id) {
     "use strict";
@@ -114,10 +114,10 @@ Template.elements.events({
         "use strict";
 
         var $optContainer = $("div#opt-container");
+        var container = document.getElementById("element-opt");
+        elementOpt = Blaze.renderWithData(Template[this.type + "Opt"], {"_id": this._id}, container);
+
         event.stopPropagation();
-
-        console.log(this);
-
         $optContainer.css("display", "block");
     }
 });
