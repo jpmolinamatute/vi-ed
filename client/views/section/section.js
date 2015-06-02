@@ -73,11 +73,6 @@ Template.section.helpers({
         "use strict";
 
         return elementsDB.find({sectionID: this._id, shown: true}).fetch();
-    },
-    data: function () {
-        "use strict";
-
-        return sectionsDB.findOne({_id: this._id});
     }
 });
 

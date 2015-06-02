@@ -55,10 +55,10 @@ Template.editor.helpers({
 
         return result;
     },
-    sectionStyle: function () {
+    style: function () {
         "use strict";
         var id = window.location.pathname.split("/editor/")[1];
-        var result;
+        var result = "";
         if (id && pagesDB.find({_id: id}).count()) {
             result = pagesDB.findOne({_id: id}, {fields: {style: 1}}).style;
         }
