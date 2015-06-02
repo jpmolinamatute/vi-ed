@@ -50,7 +50,7 @@ Template.editor.helpers({
                 newSections.index = 3;
                 sectionsDB.insert(newSections);
             }
-            result = sectionsDB.find({pageID: id}, {fields: {_id: 1}}).fetch();
+            result = sectionsDB.find({pageID: id}).fetch();
         }
 
         return result;
@@ -83,12 +83,7 @@ Template.registerHelper("getstyle", function (style) {
 });
 
 Template.editor.events({
-    "click button#opt-close": function () {
-        "use strict";
-
-        closeOptContainer();
-    },
-    "click div#opt-container": function () {
+    "click button#opt-close, click div#opt-container": function () {
         "use strict";
 
         closeOptContainer();

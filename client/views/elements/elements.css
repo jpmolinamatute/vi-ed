@@ -54,6 +54,7 @@ div.element-container > div.ui-resizable-ne {
 }
 
 div.element-container > div.ui-resizable-n {
+
     top: 0;
     left: 3px;
     right: 3px;
