@@ -1,10 +1,10 @@
 /* global elementsDB: false*/
 
+
 Template.video.onRendered(function () {
     "use strict";
 
 });
-
 Template.video.helpers({
     myWidth: function () {
         "use strict";
@@ -27,3 +27,26 @@ Template.video.helpers({
     }
 });
 Template.video.events({});
+Template.videoOpt.events({
+    "click div#video-opt": function (event) {
+        "use strict";
+        event.stopPropagation();
+    }
+});
+
+Template.videoOpt.helpers({
+    toString: function (list) {
+        "use strict";
+
+        var result = "";
+        if (Array.isArray(list)) {
+            list.toString();
+        }
+        return result;
+    },
+    data: function () {
+        "use strict";
+        console.log(this._id);
+        return elementsDB.findOne({"_id": this._id}, {fields: {data: 1}}).data;
+    }
+});

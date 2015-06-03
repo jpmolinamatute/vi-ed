@@ -5,6 +5,49 @@
 </template>
 <template name="videoOpt">
     <div id="video-opt">
-
+        {{#with data}}
+            <div class="form-group">
+                <label for="yt-id" class="control-label">Video Id</label>
+                <input type="text" class="form-control" id="yt-id" value="{{videoID}}">
+            </div>
+            <div class="checkbox">
+                <label>
+                    {{#if autohide}}
+                        <input id="yt-autohide" type="checkbox" checked>Autohide
+                    {{else}}
+                        <input id="yt-autohide" type="checkbox">Autohide
+                    {{/if}}
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    {{#if autoplay}}
+                        <input id="yt-autoplay" type="checkbox" checked>Autoplay
+                    {{else}}
+                        <input id="yt-autoplay" type="checkbox">Autoplay
+                    {{/if}}
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    {{#if controls}}
+                        <input id="yt-controls" type="checkbox" checked>controls
+                    {{else}}
+                        <input id="yt-controls" type="checkbox">controls
+                    {{/if}}
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    {{#if loop}}
+                        <input id="yt-loop" type="checkbox" checked>loop
+                    {{else}}
+                        <input id="yt-loop" type="checkbox">loop
+                    {{/if}}
+                </label>
+            </div>
+            <textarea id="yt-playlist" class="form-control" rows="3"
+                      placeholder="playlist">{{toString playlist}}</textarea>
+        {{/with}}
     </div>
 </template>

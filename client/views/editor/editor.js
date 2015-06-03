@@ -13,6 +13,7 @@ function closeOptContainer() {
     $optContainer.css("display", "none");
 
     if (elementOpt) {
+        console.log("it's going to be deleted", elementOpt);
         Blaze.remove(elementOpt);
         elementOpt = null;
     }
