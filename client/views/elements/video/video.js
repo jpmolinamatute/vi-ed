@@ -19,10 +19,22 @@ Template.video.helpers({
     },
     link: function () {
         "use strict";
-        var url = "http://www.youtube.com/embed/";
-        var videoOpt = elementsDB.findOne({"_id": this._id}, {fields: {"data": 1}}).data;
 
-        return url + videoOpt.videoID;
+        var videoOpt = elementsDB.findOne({"_id": this._id}, {fields: {"data": 1}}).data;
+        var url = videoOpt.videoID + "?";
+        url += "autohide=";
+        url += videoOpt.autohide ? "1" : "0";
+        url += "&autoplay=";
+        url += videoOpt.autoplay ? "1" : "0";
+        url += "&loop=";
+        url += videoOpt.loop ? "1" : "0";
+        if (videoOpt.playlist.length) {
+            url += "&playlist=";
+            url += videoOpt.playlist.toString();
+        }
+
+        console.log(url);
+        return url;
 
     }
 });

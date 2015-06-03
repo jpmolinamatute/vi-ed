@@ -1,8 +1,6 @@
 /* global sectionsDB:false*/
 /* global pagesDB:false*/
 /* global elementOpt: true*/
-/* global eDefaultsDB: false*/
-
 
 elementOpt = null;
 
@@ -94,36 +92,4 @@ Template.editor.events({
 Template.editor.onRendered(function () {
     "use strict";
 
-    var counter = eDefaultsDB.find().count();
-
-    if (counter === 0) {
-        eDefaultsDB.insert([
-                {
-                    "data": {"videoID": "yKC6XmsLWVQ"},
-                    "element": "video",
-                    "style": {"height": "270px", "width": "480px"}
-                },
-                {
-                    "element": "map",
-                    "style": {"height": "200px", "width": "200px"}
-                },
-                {
-                    "element": "texteditor",
-                    "style": {"height": "200px", "width": "500px"}
-                },
-                {
-                    "element": "image",
-                    "style": {"height": "300px", "width": "300px"}
-                },
-                {
-                    "element": "anchor",
-                    "style": {"height": "50px", "width": "50px"}
-                },
-                {
-                    "element": "shape",
-                    "style": {"height": "200px", "width": "200px"}
-                }
-            ]
-        );
-    }
 });

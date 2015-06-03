@@ -2,10 +2,10 @@
 /* global sectionsDB: false*/
 /* global eDefaultsDB: false*/
 
-function getElementDefault(id) {
+function getElementDefault(type) {
     "use strict";
 
-    return eDefaultsDB.findOne({"element": id});
+    return eDefaultsDB.findOne({"_id": type});
 }
 
 function setDroppable($sections) {
