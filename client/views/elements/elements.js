@@ -1,4 +1,5 @@
 /* global elementsDB:false*/
+/* global GoogleMaps:false*/
 /* global elementOpt: true*/
 
 
@@ -58,6 +59,11 @@ Template.elements.onRendered(function () {
     var element = this.$("div.element-container");
     setResizabble(element, this.data._id);
     setDraggable(element, this.data._id);
+
+
+    if (!GoogleMaps.loaded()) {
+        GoogleMaps.load();
+    }
 });
 
 Template.elements.helpers({});
@@ -139,9 +145,8 @@ Template.elements.onDestroyed(function () {
 
 Template.registerHelper("development", function () {
     "use strict";
-    return false;
+    return true;
 });
-
 
 Template.registerHelper("toInt", function (string) {
     "use strict";

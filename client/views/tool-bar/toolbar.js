@@ -18,6 +18,6 @@ Template.toolbar.onRendered(function () {
 Template.toolbar.helpers({
     data: function(){
         "use strict";
-        return eDefaultsDB.find({}, {fields:{type: 1, img: 1, label:1}});
+        return eDefaultsDB.find({}, {fields: {type: 1, img: 1, label: 1}, sort: {_id: 1}});
     }
 });

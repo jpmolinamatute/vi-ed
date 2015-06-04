@@ -44,13 +44,11 @@ Template.video.helpers({
         }
         data.width = videoOpt.style.width;
         data.height = videoOpt.style.height;
-        console.log(data.url);
         return data;
 
     }
 });
 Template.video.events({});
-
 
 Template.videoOpt.events({
     "click div#video-opt": function (event) {
@@ -83,9 +81,13 @@ Template.videoOpt.events({
     },
     "blur input#yt-id": function (event) {
         "use strict";
+        var regEx = /[a-z0-9_-]{11}/i;
+        var videoID = $(event.currentTarget).val();
 
-        var bool = $(event.currentTarget).is(":checked");
-        //elementsDB.update({_id: this._id}, {$set: {"data.autohide": bool}});
+        if (regEx.test(videoID)) {
+            elementsDB.update({_id: this._id}, {$set: {"data.videoID": videoID}});
+        }
+
     }
 });
 
