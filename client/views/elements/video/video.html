@@ -1,18 +1,29 @@
 <template name="video">
-    <iframe id="ytplayer" type="text/html" width="{{myWidth}}" height="{{myHeight}}"
-            src="http://www.youtube.com/embed/{{link}}"
-            frameborder="0"></iframe>
+    {{# if development}}
+        {{# with info}}
+            <img src="http://img.youtube.com/vi/{{data.videoID}}/0.jpg" alt="youtube-thumbnail"
+                 height="{{toInt style.height}}"
+                 width="{{toInt style.width}}">
+        {{/ with}}
+    {{else}}
+        {{# with iframe}}
+            <iframe id="ytplayer" type="text/html" width="{{toInt width}}" height="{{toInt height}}"
+                    src="http://www.youtube.com/embed/{{url}}"
+                    frameborder="0">
+            </iframe>
+        {{/ with}}
+    {{/if}}
 </template>
 <template name="videoOpt">
     <div id="video-opt">
-        {{#with data}}
+        {{#with info}}
             <div class="form-group">
                 <label for="yt-id" class="control-label">Video Id</label>
-                <input type="text" class="form-control" id="yt-id" value="{{videoID}}">
+                <input type="text" class="form-control" id="yt-id" value="{{data.videoID}}">
             </div>
             <div class="checkbox">
                 <label>
-                    {{#if autohide}}
+                    {{#if data.autohide}}
                         <input id="yt-autohide" type="checkbox" checked>Autohide
                     {{else}}
                         <input id="yt-autohide" type="checkbox">Autohide
@@ -21,7 +32,7 @@
             </div>
             <div class="checkbox">
                 <label>
-                    {{#if autoplay}}
+                    {{#if data.autoplay}}
                         <input id="yt-autoplay" type="checkbox" checked>Autoplay
                     {{else}}
                         <input id="yt-autoplay" type="checkbox">Autoplay
@@ -30,16 +41,16 @@
             </div>
             <div class="checkbox">
                 <label>
-                    {{#if controls}}
-                        <input id="yt-controls" type="checkbox" checked>controls
+                    {{#if data.control}}
+                        <input id="yt-control" type="checkbox" checked>controls
                     {{else}}
-                        <input id="yt-controls" type="checkbox">controls
+                        <input id="yt-control" type="checkbox">controls
                     {{/if}}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    {{#if loop}}
+                    {{#if data.loop}}
                         <input id="yt-loop" type="checkbox" checked>loop
                     {{else}}
                         <input id="yt-loop" type="checkbox">loop
@@ -47,7 +58,7 @@
                 </label>
             </div>
             <textarea id="yt-playlist" class="form-control" rows="3"
-                      placeholder="playlist">{{toString playlist}}</textarea>
+                      placeholder="playlist">{{toString data.playlist}}</textarea>
         {{/with}}
     </div>
 </template>

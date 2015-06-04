@@ -6,43 +6,86 @@ Template.video.onRendered(function () {
 
 });
 Template.video.helpers({
-    myWidth: function () {
-        "use strict";
-        var w = elementsDB.findOne({"_id": this._id}, {fields: {"style.width": 1}}).style.width;
-        return parseInt(w, 10);
-
-    },
-    myHeight: function () {
-        "use strict";
-        var h = elementsDB.findOne({"_id": this._id}, {fields: {"style.height": 1}}).style.height;
-        return parseInt(h, 10);
-    },
-    link: function () {
+    info: function () {
         "use strict";
 
-        var videoOpt = elementsDB.findOne({"_id": this._id}, {fields: {"data": 1}}).data;
-        var url = videoOpt.videoID + "?";
-        url += "autohide=";
-        url += videoOpt.autohide ? "1" : "0";
-        url += "&autoplay=";
-        url += videoOpt.autoplay ? "1" : "0";
-        url += "&loop=";
-        url += videoOpt.loop ? "1" : "0";
-        if (videoOpt.playlist.length) {
-            url += "&playlist=";
-            url += videoOpt.playlist.toString();
+        return elementsDB.findOne({"_id": this._id}, {
+            fields: {
+                "style.width": 1,
+                "style.height": 1,
+                "data.videoID": 1
+            }
+        });
+    },
+
+    iframe: function () {
+        "use strict";
+
+        var videoOpt = elementsDB.findOne({"_id": this._id}, {
+            fields: {
+                "data": 1,
+                "style.width": 1,
+                "style.height": 1
+            }
+        });
+        var data = {};
+        data.url = videoOpt.data.videoID + "?";
+        data.url += "autohide=";
+        data.url += videoOpt.data.autohide ? "1" : "0";
+        data.url += "&autoplay=";
+        data.url += videoOpt.data.autoplay ? "1" : "0";
+        data.url += "&loop=";
+        data.url += videoOpt.data.loop ? "1" : "0";
+        data.url += "&controls=";
+        data.url += videoOpt.data.control ? "1" : "0";
+        if (videoOpt.data.playlist.length) {
+            data.url += "&playlist=";
+            data.url += videoOpt.data.playlist.toString();
         }
-
-        console.log(url);
-        return url;
+        data.width = videoOpt.style.width;
+        data.height = videoOpt.style.height;
+        console.log(data.url);
+        return data;
 
     }
 });
 Template.video.events({});
+
+
 Template.videoOpt.events({
     "click div#video-opt": function (event) {
         "use strict";
         event.stopPropagation();
+    },
+    "change input#yt-autohide": function (event) {
+        "use strict";
+
+        var bool = $(event.currentTarget).is(":checked");
+        elementsDB.update({_id: this._id}, {$set: {"data.autohide": bool}});
+    },
+    "change input#yt-autoplay": function (event) {
+        "use strict";
+
+        var bool = $(event.currentTarget).is(":checked");
+        elementsDB.update({_id: this._id}, {$set: {"data.autoplay": bool}});
+    },
+    "change input#yt-control": function (event) {
+        "use strict";
+
+        var bool = $(event.currentTarget).is(":checked");
+        elementsDB.update({_id: this._id}, {$set: {"data.control": bool}});
+    },
+    "change input#yt-loop": function (event) {
+        "use strict";
+
+        var bool = $(event.currentTarget).is(":checked");
+        elementsDB.update({_id: this._id}, {$set: {"data.loop": bool}});
+    },
+    "blur input#yt-id": function (event) {
+        "use strict";
+
+        var bool = $(event.currentTarget).is(":checked");
+        //elementsDB.update({_id: this._id}, {$set: {"data.autohide": bool}});
     }
 });
 
@@ -56,9 +99,8 @@ Template.videoOpt.helpers({
         }
         return result;
     },
-    data: function () {
+    info: function () {
         "use strict";
-        console.log(this._id);
-        return elementsDB.findOne({"_id": this._id}, {fields: {data: 1}}).data;
+        return elementsDB.findOne({"_id": this._id}, {fields: {data: 1}});
     }
 });

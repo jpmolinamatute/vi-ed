@@ -136,3 +136,14 @@ Template.elements.onDestroyed(function () {
     }
 
 });
+
+Template.registerHelper("development", function () {
+    "use strict";
+    return false;
+});
+
+
+Template.registerHelper("toInt", function (string) {
+    "use strict";
+    return parseInt(string, 10);
+});
