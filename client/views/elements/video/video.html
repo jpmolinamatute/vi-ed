@@ -1,5 +1,11 @@
 <template name="video">
     {{# if development}}
+        {{# if list}}
+            <div class="yt-list">
+                <button type="button" class="transparent previous" title="Previous Video"><i class="fa fa-angle-left"></i></button>
+                <button type="button" class="transparent next" title="Next Video"><i class="fa fa-angle-right"></i></button>
+            </div>
+        {{/ if}}
         {{# with info}}
             <img src="http://img.youtube.com/vi/{{data.videoID}}/0.jpg" alt="youtube-thumbnail"
                  height="{{toInt style.height}}"

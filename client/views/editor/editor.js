@@ -11,7 +11,6 @@ function closeOptContainer() {
     $optContainer.css("display", "none");
 
     if (elementOpt) {
-        console.log("it's going to be deleted", elementOpt);
         Blaze.remove(elementOpt);
         elementOpt = null;
     }
@@ -86,6 +85,10 @@ Template.editor.events({
         "use strict";
 
         closeOptContainer();
+    },
+    "click div#element-opt": function(event){
+        "use strict";
+        event.stopPropagation();
     }
 });
 

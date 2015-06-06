@@ -44,12 +44,10 @@ function cleanUp($element) {
 
     if ($element.resizable("instance")) {
         $element.resizable("destroy");
-        console.log("un elemento resizable detruido");
     }
 
     if ($element.draggable("instance")) {
         $element.draggable("destroy");
-        console.log("un elemento draggable detruido");
     }
 }
 
@@ -60,10 +58,6 @@ Template.elements.onRendered(function () {
     setResizabble(element, this.data._id);
     setDraggable(element, this.data._id);
 
-
-    if (!GoogleMaps.loaded()) {
-        GoogleMaps.load();
-    }
 });
 
 Template.elements.helpers({});

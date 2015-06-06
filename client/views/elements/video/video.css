@@ -1,6 +1,23 @@
 div#video-opt {
     position: absolute;
     top: 25px;
-    right: 0;
+    right: 2px;
+    left: 2px;
+}
+
+div.yt-list {
+    position: absolute;
+    top: 0;
     left: 0;
+    background-color: #FFF;
+    width: 50px;
+}
+
+div.yt-list button.transparent {
+    background: transparent;
+    height: 100%;
+    width: 25px;
+    border: none;
+    float: left;
+    color: black;
 }

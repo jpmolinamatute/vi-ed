@@ -19,4 +19,8 @@ Template.map.events({});
 
 Template.map.onRendered(function () {
     "use strict";
+
+    if (!GoogleMaps.loaded()) {
+        GoogleMaps.load({key: "AIzaSyCfMqRmnepBNo_3e93FH68QGg7ntNqpBlk"});
+    }
 });
