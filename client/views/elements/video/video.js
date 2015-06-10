@@ -9,27 +9,32 @@ Template.video.onRendered(function () {
     "use strict";
 
 });
+
 Template.video.helpers({
     info: function () {
         "use strict";
 
-        return elementsDB.findOne({"_id": this._id}, {
+        var info = elementsDB.findOne({_id: this._id}, {
             fields: {
                 "style.width": 1,
                 "style.height": 1,
-                "data.videoID": 1
+                "data.videoID": 1,
+                "data.playlist": 1
             }
         });
+        info.data.playlist.unshift(info.data.videoID);
+        videoList = info.data.playlist;
+
+        return {
+            width: info.style.width,
+            height: info.style.height,
+            videoID: info.data.playlist[0]
+        };
     },
-    list: function(){
+    list: function () {
         "use strict";
+
         var list = elementsDB.findOne({_id: this._id}, {fields: {"data.playlist": 1}}).data.playlist;
-        var currentVideo;
-        if(list.length){
-            currentVideo = elementsDB.findOne({_id: this._id}, {fields: {"data.videoID": 1}}).data.videoID;
-            list.unshift(currentVideo);
-            videoList = list;
-        }
 
         return list.length ? true : false;
     },
@@ -64,36 +69,39 @@ Template.video.helpers({
     }
 });
 Template.video.events({
-    "click div.yt-list button.next": function(event){
+    "click div.yt-list button.next": function (event) {
         "use strict";
 
         var $img = $(event.currentTarget).closest("div.element-container").find("img");
         var link;
-        console.log("list index ", videoIndex);
 
-        if(videoIndex < videoList.length){
+        if (videoIndex < videoList.length - 1) {
+            videoIndex++;
             link = "http://img.youtube.com/vi/" + videoList[videoIndex] + "/0.jpg";
             $img.attr("src", link);
-            videoIndex++;
+
         } else {
+            videoIndex = 0;
             link = "http://img.youtube.com/vi/" + videoList[0] + "/0.jpg";
             $img.attr("src", link);
-            videoIndex = 0;
+
         }
     },
-    "click div.yt-list button.previous": function(event){
+    "click div.yt-list button.previous": function (event) {
         "use strict";
         var $img = $(event.currentTarget).closest("div.element-container").find("img");
         var link;
-        console.log("list index ", videoIndex);
-        if(videoIndex > 0){
-            link = "http://img.youtube.com/vi/" + videoList[videoIndex] + "/0.jpg";
-            $img.attr("src", link);
+
+        if (videoIndex > 0) {
             videoIndex--;
-        }else{
             link = "http://img.youtube.com/vi/" + videoList[videoIndex] + "/0.jpg";
             $img.attr("src", link);
+
+        } else {
             videoIndex = videoList.length - 1;
+            link = "http://img.youtube.com/vi/" + videoList[videoIndex] + "/0.jpg";
+            $img.attr("src", link);
+
         }
     }
 });
@@ -171,7 +179,7 @@ Template.videoOpt.helpers({
         var limit;
         if (Array.isArray(list)) {
             limit = list.length - 1;
-            _.each(list, function(value, key){
+            _.each(list, function (value, key) {
                 result += value;
                 result += key !== limit ? ", " : "";
             });
@@ -184,7 +192,7 @@ Template.videoOpt.helpers({
     }
 });
 
-Template.videoOpt.onRendered(function (){
+Template.videoOpt.onRendered(function () {
     "use strict";
 
 });
