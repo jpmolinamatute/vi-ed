@@ -1,5 +1,4 @@
 /* global elementsDB:false*/
-/* global GoogleMaps:false*/
 /* global elementOpt: true*/
 
 
@@ -7,19 +6,35 @@ function setResizabble($element, id) {
     "use strict";
     $element.resizable({
         handles: {
-            n: "div.ui-resizable-n",
-            e: "div.ui-resizable-e",
-            s: "div.ui-resizable-s",
-            w: "div.ui-resizable-w",
-            ne: "div.ui-resizable-ne",
-            se: "div.ui-resizable-se",
-            sw: "div.ui-resizable-sw",
-            nw: "div.ui-resizable-nw"
+            n: $element.find("div.ui-resizable-n"),
+            e: $element.find("div.ui-resizable-e"),
+            s: $element.find("div.ui-resizable-s"),
+            w: $element.find("div.ui-resizable-w"),
+            ne: $element.find("div.ui-resizable-ne"),
+            se: $element.find("div.ui-resizable-se"),
+            sw: $element.find("div.ui-resizable-sw"),
+            nw: $element.find("div.ui-resizable-nw")
         },
         stop: function (event, ui) {
-            var width = ui.size.width + "px";
-            var height = ui.size.height + "px";
-            elementsDB.update({_id: id}, {$set: {"style.width": width, "style.height": height}});
+            var info = {};
+
+            if (ui.originalPosition.top !== ui.position.top) {
+                info["style.top"] = ui.position.top + "px";
+            }
+
+            if (ui.originalPosition.left !== ui.position.left) {
+                info["style.left"] = ui.position.left + "px";
+            }
+
+            if (ui.originalSize.width !== ui.size.width) {
+                info["style.width"] = ui.size.width + "px";
+            }
+
+            if (ui.originalSize.height !== ui.size.height) {
+                info["style.height"] = ui.size.height + "px";
+            }
+            console.log("original width", ui.originalSize.width, "final width", ui.size.width);
+            elementsDB.update({_id: id}, {$set: info});
         }
     });
 }
