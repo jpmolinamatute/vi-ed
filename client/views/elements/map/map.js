@@ -10,12 +10,13 @@ Template.map.helpers({
     },
     opt: function () {
         "use strict";
+        var map;
 
         if (GoogleMaps.loaded()) {
-            // Map initialization options
+            map = elementsDB.findOne({_id: this._id}, {fields: {data: 1}}).data;
             return {
-                center: new google.maps.LatLng(-37.8136, 144.9631),
-                zoom: 8
+                center: new google.maps.LatLng(map.center.latitude, map.center.longitude),
+                zoom: map.zoom
             };
         }
     }
@@ -38,7 +39,7 @@ Template.map.onCreated(function () {
     var mapId = "map-" + elementID;
     var markers = {};
     var markerIndex = 0;
-    elementsDB.update({_id: elementID}, {$set: {"data.markers": []}});
+
     GoogleMaps.ready(mapId, function (map) {
         google.maps.event.addListener(map.instance, "click", function (event) {
 
