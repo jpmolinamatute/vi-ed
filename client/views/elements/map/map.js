@@ -1,6 +1,15 @@
 /* global GoogleMaps: false*/
 /* global google: false*/
 /* global elementsDB: false*/
+/* global resizeMap: true*/
+
+
+resizeMap = function (id) {
+    "use strict";
+    var myMap = GoogleMaps.maps["map-" + id].instance;
+    google.maps.event.trigger(myMap, "resize");
+};
+
 
 Template.map.helpers({
     mapName: function () {
@@ -22,7 +31,12 @@ Template.map.helpers({
     }
 });
 
-Template.map.events({});
+Template.map.events({
+    "resize": function () {
+        "use strict";
+        console.log("I was rezied! please :-(");
+    }
+});
 
 Template.map.onRendered(function () {
     "use strict";

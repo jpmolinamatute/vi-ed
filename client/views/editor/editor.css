@@ -1,13 +1,19 @@
 div#vied-toolbar-holder {
+    position: absolute;
     height: 30px;
-    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
     background-color: black;
 }
 
 div#vied-editor {
-    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30px;
+    bottom: 20px;
     background-color: green;
-    flex: 1;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -42,4 +48,36 @@ button#opt-close {
     width: 25px;
     height: 25px;
     padding: 0;
+}
+
+div#vied-statusbar {
+    position: absolute;
+    height: 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: grey;
+}
+
+div#vied-statusbar-filler {
+    border: double black;
+    height: 100%;
+    width: 100%;
+    float: left;
+}
+
+div#vied-statusbar span.tag {
+    font-weight: bolder;
+}
+
+div#vied-statusbar span.value {
+    color: white;
+}
+
+div#vied-statusbar-opt1,
+div#vied-statusbar-opt2 {
+    display: none;
+    width: 25%;
+    border: double black;
+    float: left;
 }

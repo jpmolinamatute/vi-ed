@@ -22,7 +22,7 @@ Template.editor.helpers({
         "use strict";
         var id = window.location.pathname.split("/editor/")[1];
 
-        var height = ($(window).height() - 30) / 3;
+        var height = ($(window).height() - 50) / 3;
         var newSections;
         var result;
         if (id) {

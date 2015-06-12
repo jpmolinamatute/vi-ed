@@ -4,6 +4,9 @@
 
 function setResizabble($element, id) {
     "use strict";
+    var $filler = $("div#vied-statusbar-filler");
+    var $opt1 = $("div#vied-statusbar-opt1");
+    var $opt2 = $("div#vied-statusbar-opt2");
     $element.resizable({
         handles: {
             n: $element.find("div.ui-resizable-n"),
@@ -14,6 +17,23 @@ function setResizabble($element, id) {
             se: $element.find("div.ui-resizable-se"),
             sw: $element.find("div.ui-resizable-sw"),
             nw: $element.find("div.ui-resizable-nw")
+        },
+        start: function (event, ui) {
+            var width = Math.round(ui.originalSize.width * 100) / 100;
+            var height = Math.round(ui.originalSize.height * 100) / 100;
+            $filler.css("width", "50%");
+            $opt1.css("display", "inline-block");
+            $opt2.css("display", "inline-block");
+            $opt1.find("span.tag").html("Width:");
+            $opt1.find("span.value").html(width + "px");
+            $opt2.find("span.tag").html("Height:");
+            $opt2.find("span.value").html(height + "px");
+        },
+        resize: function (event, ui) {
+            var width = Math.round(ui.size.width * 100) / 100;
+            var height = Math.round(ui.size.height * 100) / 100;
+            $opt1.find("span.value").html(width + "px");
+            $opt2.find("span.value").html(height + "px");
         },
         stop: function (event, ui) {
             var info = {};
@@ -33,12 +53,18 @@ function setResizabble($element, id) {
             if (ui.originalSize.height !== ui.size.height) {
                 info["style.height"] = ui.size.height + "px";
             }
-            console.log("original width", ui.originalSize.width, "final width", ui.size.width);
+
             elementsDB.update({_id: id}, {$set: info});
+            $filler.width("100%");
+            $opt1.css("display", "none");
+            $opt2.css("display", "none");
+            $opt1.find("span.tag").html(" ");
+            $opt1.find("span.value").html(" ");
+            $opt2.find("span.tag").html(" ");
+            $opt2.find("span.value").html(" ");
         }
     });
 }
-
 
 function setDraggable(element, id) {
     "use strict";
@@ -69,9 +95,9 @@ function cleanUp($element) {
 Template.elements.onRendered(function () {
     "use strict";
 
-    var element = this.$("div.element-container");
-    setResizabble(element, this.data._id);
-    setDraggable(element, this.data._id);
+    var $element = this.$("div.element-container");
+    setResizabble($element, this.data._id);
+    setDraggable($element, this.data._id);
 
 });
 
