@@ -1,3 +1,2 @@
 .idea
-server/updateDefaults.js
-
+private/credentials.json

@@ -2,8 +2,20 @@
 /*global sectionsDB: true*/
 /*global pagesDB: true*/
 /*global eDefaultsDB: true*/
+/*global MongoInternals: false*/
 
-elementsDB = new Mongo.Collection("elements");
-sectionsDB = new Mongo.Collection("sections");
-pagesDB = new Mongo.Collection("pages");
-eDefaultsDB = new Mongo.Collection("elementDefault");
+
+var driver = {};
+var mongo;
+
+if (Meteor.settings &&
+    Meteor.settings.mongodb &&
+    Meteor.isServer) {
+    mongo = new MongoInternals.RemoteCollectionDriver(Meteor.settings.mongodb);
+    driver._driver = mongo;
+}
+
+elementsDB = new Mongo.Collection("elements", driver);
+sectionsDB = new Mongo.Collection("sections", driver);
+pagesDB = new Mongo.Collection("pages", driver);
+eDefaultsDB = new Mongo.Collection("elementDefault", driver);
