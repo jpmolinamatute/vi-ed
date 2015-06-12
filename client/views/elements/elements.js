@@ -68,14 +68,41 @@ function setResizabble($element, id) {
 
 function setDraggable(element, id) {
     "use strict";
+    var $filler = $("div#vied-statusbar-filler");
+    var $opt1 = $("div#vied-statusbar-opt1");
+    var $opt2 = $("div#vied-statusbar-opt2");
 
     element.draggable({
         containment: "parent",
         handle: "div.element-draggable",
+        start: function (event, ui) {
+            var top = Math.round(ui.position.top * 100) / 100;
+            var left = Math.round(ui.position.left * 100) / 100;
+            $filler.css("width", "50%");
+            $opt1.css("display", "inline-block");
+            $opt2.css("display", "inline-block");
+            $opt1.find("span.tag").html("Top:");
+            $opt1.find("span.value").html(top + "px");
+            $opt2.find("span.tag").html("Left:");
+            $opt2.find("span.value").html(left + "px");
+        },
+        drag: function (event, ui) {
+            var top = Math.round(ui.position.top * 100) / 100;
+            var left = Math.round(ui.position.left * 100) / 100;
+            $opt1.find("span.value").html(top + "px");
+            $opt2.find("span.value").html(left + "px");
+        },
         stop: function (event, ui) {
             var left = ui.position.left + "px";
             var top = ui.position.top + "px";
             elementsDB.update({_id: id}, {$set: {"style.top": top, "style.left": left}});
+            $filler.width("100%");
+            $opt1.css("display", "none");
+            $opt2.css("display", "none");
+            $opt1.find("span.tag").html(" ");
+            $opt1.find("span.value").html(" ");
+            $opt2.find("span.tag").html(" ");
+            $opt2.find("span.value").html(" ");
         }
     });
 }
