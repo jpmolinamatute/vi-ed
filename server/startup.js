@@ -1,51 +1,6 @@
 /* global ServiceConfiguration: false*/
 
-var accounts = [
-    {
-        "twitter": [
-            {service: "twitter"},
-            {
-                consumerKey: "E2m2dzLRW0OyI40zpVkTpbktg",
-                loginStyle: "popup",
-                secret: "wmkMeilvYHmJ1dX4EcDBBsBF9qaQ8646vmDvHXkpQub6k8DtHE",
-                service: "twitter"
-            }
-        ]
-    },
-    {
-        "github": [
-            {service: "github"},
-            {
-                clientId: "c62529396da0d5562211",
-                loginStyle: "popup",
-                secret: "865a7afc7da39f840bf0624ac128fa0d3416eee4",
-                service: "github"
-            }
-        ]
-    },
-    {
-        google: [
-            {service: "google"},
-            {
-                clientId: "23094185778-nfq17s96agjikjacbqld9ar5s2ik5qku.apps.googleusercontent.com",
-                loginStyle: "popup",
-                secret: "LlywcE-e2BUdN5wNY8ELId9D",
-                service: "google"
-            }
-        ]
-    },
-    {
-        "facebook": [
-            {service: "facebook"},
-            {
-                appId: 831269770256101,
-                loginStyle: "popup",
-                secret: "471c6fbabae870a95277db3c6015fa4d",
-                service: "facebook"
-            }
-        ]
-    }
-];
+
 
 
 //_.each(accounts, function (value) {

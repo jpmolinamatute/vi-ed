@@ -10,6 +10,7 @@ var mongo;
 
 if (Meteor.settings &&
     Meteor.settings.mongodb &&
+    Meteor.settings.localhost &&
     Meteor.isServer) {
     mongo = new MongoInternals.RemoteCollectionDriver(Meteor.settings.mongodb);
     driver._driver = mongo;
