@@ -1,0 +1,17 @@
+<template name="toolbar">
+    <ul id="vied-toolbar">
+        {{#each data}}
+            <li>
+                <div class="tools btn btn-success btn-xs" data-type="{{type}}" title="{{label}}">
+                    <i class="fa {{img}}"></i>
+                </div>
+            </li>
+        {{/each}}
+        <li>
+            <div class="tools btn btn-primary btn-xs" data-type="options" title="Options">
+                <i class="fa fa-cog"></i>
+            </div>
+        </li>
+    </ul>
+</template>
+

@@ -1,12 +1,16 @@
 <template name="section">
-        <section id="{{_id}}" class="sections" data-type="{{type}}" style="{{getstyle style}}">
-            <div class="section-body {{#if fullwidth}}container-fluid{{else}}container{{/if}}">
-                {{# each myElements}}
-                    {{> elements }}
-                {{/each}}
-            </div>
-            <div class="ui-resizable-handle ui-resizable-s"></div>
-        </section>
+    <section id="{{_id}}" class="sections" data-type="{{type}}" style="{{getstyle style}}">
+        <div class="section-body {{#if fullwidth}}container-fluid{{else}}container{{/if}}">
+            {{# each myElements}}
+                {{> elements }}
+            {{/each}}
+        </div>
+        <div class="ui-resizable-handle ui-resizable-s">
+            <i class="fa fa-sort"></i>
+        </div>
+    </section>
 </template>
 
-
+<template name="sectionOptions">
+    <div class="generalOption"></div>
+</template>

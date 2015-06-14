@@ -1,21 +1,5 @@
 /* global sectionsDB:false*/
 /* global pagesDB:false*/
-/* global elementOpt: true*/
-
-elementOpt = null;
-
-function closeOptContainer() {
-    "use strict";
-    var $optContainer = $("div#opt-container");
-
-    $optContainer.css("display", "none");
-
-    if (elementOpt) {
-        Blaze.remove(elementOpt);
-        elementOpt = null;
-    }
-
-}
 
 Template.editor.helpers({
     sections: function () {
@@ -81,15 +65,6 @@ Template.registerHelper("getstyle", function (style) {
 });
 
 Template.editor.events({
-    "click button#opt-close, click div#opt-container": function () {
-        "use strict";
-
-        closeOptContainer();
-    },
-    "click div#element-opt": function(event){
-        "use strict";
-        event.stopPropagation();
-    }
 });
 
 Template.editor.onRendered(function () {

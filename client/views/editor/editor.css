@@ -13,41 +13,9 @@ div#vied-editor {
     right: 0;
     top: 30px;
     bottom: 20px;
-    background-color: green;
+    background-color: transparent;
     overflow-y: scroll;
     overflow-x: hidden;
-}
-
-div#opt-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: none;
-    background: rgba(255, 255, 255, 0.5);
-    z-index: 9999;
-}
-
-div#element-opt {
-    position: absolute;
-    width: 400px;
-    height: 500px;
-    border: 1px solid black;
-    top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -200px;
-    background-color: white;
-}
-
-button#opt-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 25px;
-    height: 25px;
-    padding: 0;
 }
 
 div#vied-statusbar {

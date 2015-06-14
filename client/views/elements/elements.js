@@ -1,5 +1,7 @@
 /* global elementsDB:false*/
-/* global elementOpt: true*/
+/* global eDefaultsDB:false*/
+/* global modalBody: true*/
+/* global modalFooter: true*/
 
 
 function setResizabble($element, id) {
@@ -7,7 +9,14 @@ function setResizabble($element, id) {
     var $filler = $("div#vied-statusbar-filler");
     var $opt1 = $("div#vied-statusbar-opt1");
     var $opt2 = $("div#vied-statusbar-opt2");
+    var type = $element.data("type");
+    var minimun = eDefaultsDB.findOne({"_id": type}, {fields: {"style": 1}}).style;
+    var $section = $element.closest("div.section-body");
     $element.resizable({
+        maxHeight: $section.height(),
+        maxWidth: $section.width(),
+        minHeight: parseInt(minimun.height, 10),
+        minWidth: parseInt(minimun.width, 10),
         handles: {
             n: $element.find("div.ui-resizable-n"),
             e: $element.find("div.ui-resizable-e"),
@@ -181,12 +190,15 @@ Template.elements.events({
     "click div.element-container div.element-toolbar button.options": function (event) {
         "use strict";
 
-        var $optContainer = $("div#opt-container");
-        var container = document.getElementById("element-opt");
-        elementOpt = Blaze.renderWithData(Template[this.type + "Opt"], {"_id": this._id}, container);
 
+        var $modal = $("div#vied-modal");
+        var container = document.getElementById("vied-modal-body");
+        $("h4#vied-modal-title").text("Options for a " + this.type);
+        modalBody = Blaze.renderWithData(Template[this.type + "Opt"], {"_id": this._id}, container);
+
+
+        $modal.modal("show");
         event.stopPropagation();
-        $optContainer.css("display", "block");
     }
 });
 

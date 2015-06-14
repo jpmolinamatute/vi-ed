@@ -1,9 +1,9 @@
 section.sections {
     position: relative;
+    border-bottom: 1px dashed black;
 }
 
 section.sections > div.section-body {
-    width: 100%;
     height: 100%;
     position: relative;
     border-left: solid gray 1px;
@@ -12,13 +12,17 @@ section.sections > div.section-body {
 
 section.sections > div.ui-resizable-s {
     position: absolute;
-    height: 6px;
+    padding: 1px 3px;
+    cursor: row-resize;
     bottom: 0;
     right: 0;
-    left: 0;
-    margin-bottom: -3px;
-    background-color: black;
-    cursor: row-resize;
+    margin-bottom: -11px;
+}
+
+section.sections div.ui-resizable-s i {
+    width: 10px;
+    height: 14px;
+
 }
 
 section.sections div.cover {
