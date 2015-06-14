@@ -195,7 +195,7 @@ Template.elements.events({
         var container = document.getElementById("vied-modal-body");
         $("h4#vied-modal-title").text("Options for a " + this.type);
         modalBody = Blaze.renderWithData(Template[this.type + "Opt"], {"_id": this._id}, container);
-
+        $("div#vied-modal-footer").addClass("hidden");
 
         $modal.modal("show");
         event.stopPropagation();
