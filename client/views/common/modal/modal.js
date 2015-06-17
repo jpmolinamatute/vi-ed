@@ -12,7 +12,7 @@ Template.modal.events({
 
         var $modal = $("div#vied-modal");
 
-        $modal.find("modal-dialog").removeClass("modal-lg modal-sm");
+        $modal.find("div.modal-dialog").removeClass("modal-lg modal-sm");
         $("div#vied-modal-footer").removeClass("hidden");
         if (modalBody) {
             Blaze.remove(modalBody);

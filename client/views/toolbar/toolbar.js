@@ -48,3 +48,12 @@ Template.toolbar.helpers({
         return eDefaultsDB.find({}, {fields: {type: 1, img: 1, label: 1}, sort: {_id: 1}});
     }
 });
+
+Template.toolbar.events({
+    "click button#vied-show-opt": function () {
+        "use strict";
+        var $modal = $("div#vied-modal");
+        $modal.find("div.modal-dialog").addClass("modal-lg");
+        $modal.modal("show");
+    }
+});
