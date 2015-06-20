@@ -1,6 +1,7 @@
 section.sections {
     position: relative;
     border-bottom: 1px dashed black;
+    background-color: transparent;
 }
 
 section.sections > div.section-body {
@@ -8,6 +9,7 @@ section.sections > div.section-body {
     position: relative;
     border-left: solid gray 1px;
     border-right: solid gray 1px;
+    background-color: transparent;
 }
 
 section.sections > div.ui-resizable-s {

@@ -91,6 +91,23 @@ Template.sectionOptions.events({
         "use strict";
         var myBool = $(event.currentTarget).is(":checked");
         sectionsDB.update({_id: this._id}, {$set: {"fullwidth": myBool}});
+    },
+    "change input.bg-color": function (event) {
+        "use strict";
+
+        var color = $(event.currentTarget).val();
+
+        if (validateColorHex.test(color)) {
+            sectionsDB.update({_id: this._id}, {$set: {style: {"background-color": color}}});
+        }
+    },
+    "change input[name='transparent']": function (event) {
+        "use strict";
+        var myBool = $(event.currentTarget).is(":checked");
+        sectionsDB.update({_id: this._id}, {$set: {"transparentbg": myBool}});
+        if (myBool) {
+            sectionsDB.update({_id: this._id}, {$unset: {"style.background-color": ""}});
+        }
     }
 });
 
@@ -102,18 +119,17 @@ Template.sectionOptions.helpers({
     bgColor: function () {
         "use strict";
         return sectionsDB.findOne({_id: this._id}, {fields: {"style.background-color": 1}}).style["background-color"];
-    }
-});
-
-Template.sectionOptions.events({
-    "change input.bg-color": function (event) {
+    },
+    fullwidthid: function () {
         "use strict";
-
-        var color = $(event.currentTarget).val();
-
-        if (validateColorHex.test(color)) {
-            console.log(this._id, color);
-            sectionsDB.update({_id: this._id}, {$set: {style: {"background-color": color}}});
-        }
+        return "fullwidth-" + this._id;
+    },
+    transparentid: function () {
+        "use strict";
+        return "transparent-" + this._id;
+    },
+    checktransparent: function () {
+        "use strict";
+        return sectionsDB.findOne({_id: this._id}, {fields: {transparentbg: 1}}).transparentbg;
     }
 });

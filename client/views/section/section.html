@@ -14,18 +14,17 @@
 <template name="sectionOptions">
     <div id="{{optID}}" role="tabpanel" class="tab-pane fade">
         <span>Full Width</span>
-
-        <div class="onoffswitch">
-            <input type="checkbox" name="fullwidth" class="onoffswitch-checkbox"
-                   id="full-width-{{_id}}" checked="{{# if checkfullwidth}}checked{{/if}}">
-            <label class="onoffswitch-label" for="full-width-{{_id}}">
-                <span class="onoffswitch-inner"></span>
-                <span class="onoffswitch-switch"></span>
-            </label>
-        </div>
+        {{> onoffswitch _id=_id id=fullwidthid checked=checkfullwidth name="fullwidth"}}
+        {{> onoffswitch _id=_id id=transparentid checked=checktransparent name="transparent"}}
         <div class="form-group">
             <label for="vied-section-bg-{{_id}}">Background Color:</label>
-            <input type="color" class="form-control bg-color" id="vied-section-bg-{{_id}}" value="{{bgColor}}">
+            {{# if checktransparent}}
+                <input type="color" class="form-control bg-color" id="vied-section-bg-{{_id}}" value="{{bgColor}}"
+                       disabled>
+            {{else}}
+                <input type="color" class="form-control bg-color" id="vied-section-bg-{{_id}}" value="{{bgColor}}">
+
+            {{/if}}
         </div>
         <p>{{optID}}</p>
 

@@ -20,6 +20,7 @@ Template.editor.helpers({
                 shown: true,
                 index: 0,
                 fullwidth: true,
+                transparentbg: true,
                 sharedWith: [],
                 height: "400px",
                 style: {}
