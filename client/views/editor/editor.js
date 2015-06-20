@@ -1,14 +1,16 @@
 /* global sectionsDB:false*/
 /* global pagesDB:false*/
+/* global validateColorHex: true*/
+
+validateColorHex = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
+
 
 Template.editor.helpers({
     sections: function () {
         "use strict";
         var id = window.location.pathname.split("/editor/")[1];
-
-        var height = ($(window).height() - 50) / 3;
         var newSections;
-        var result;
+        var result = {};
         if (id) {
             newSections = {
                 owner: Meteor.userId(),
@@ -16,27 +18,22 @@ Template.editor.helpers({
                 type: "head",
                 pageID: id,
                 shown: true,
-                index: 1,
+                index: 0,
                 fullwidth: true,
                 sharedWith: [],
-                style: {
-                    height: height + "px"
-                }
+                height: "400px",
+                style: {}
             };
-            if (!sectionsDB.find({
-                    pageID: id
-                }).count()) {
+            if (!sectionsDB.find({pageID: id}).count()) {
                 sectionsDB.insert(newSections);
                 newSections.type = "body";
-                newSections.index = 2;
+                newSections.index = 1;
                 sectionsDB.insert(newSections);
                 newSections.type = "footer";
-                newSections.index = 3;
+                newSections.index = 2;
                 sectionsDB.insert(newSections);
             }
-            result = sectionsDB.find({
-                pageID: id
-            }).fetch();
+            result = sectionsDB.find({pageID: id}, {sort: {index: 1}}).fetch();
         }
 
         return result;
@@ -88,7 +85,28 @@ Template.editor.onRendered(function () {
 
 });
 
-Template.editorOptions.onCreated(function () {
+Template.editorOptions.onRendered(function () {
     "use strict";
 
+    // for more info : https://github.com/PitPik/tinyColorPicker
+    //$("input#vied-editor-corlor-bg").colorPicker();
+});
+
+Template.editorOptions.helpers({
+    bgColor: function () {
+        "use strict";
+        return pagesDB.findOne({_id: this._id}, {fields: {"style.background-color": 1}}).style["background-color"];
+    }
+});
+
+Template.editorOptions.events({
+    "change input#vied-editor-corlor-bg": function (event) {
+        "use strict";
+
+        var color = $(event.currentTarget).val();
+
+        if (validateColorHex.test(color)) {
+            pagesDB.update({_id: this._id}, {$set: {style: {"background-color": color}}});
+        }
+    }
 });

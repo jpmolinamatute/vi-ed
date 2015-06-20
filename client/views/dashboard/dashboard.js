@@ -29,7 +29,7 @@ Template.dashboard.events({
 Template.dashboard.helpers({
     pages: function () {
         "use strict";
-        pagesDB.find().fetch();
+
         return pagesDB.find({}, {fields: {title: 1}}).fetch();
     }
 });

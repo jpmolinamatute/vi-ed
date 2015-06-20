@@ -1,6 +1,7 @@
 /* global elementsDB: false*/
 /* global sectionsDB: false*/
 /* global eDefaultsDB: false*/
+/* global validateColorHex: false*/
 
 function getElementDefault(type) {
     "use strict";
@@ -55,7 +56,7 @@ function setResizable($sections, id) {
         handles: {s: "div.ui-resizable-s"},
         stop: function (event, ui) {
             var height = ui.size.height + "px";
-            sectionsDB.update({_id: id}, {$set: {"style.height": height}});
+            sectionsDB.update({_id: id}, {$set: {"height": height}});
         }
     });
 }
@@ -96,7 +97,23 @@ Template.sectionOptions.events({
 Template.sectionOptions.helpers({
     checkfullwidth: function () {
         "use strict";
-        console.log(sectionsDB.findOne({_id: this._id}, {fields: {fullwidth: 1}}).fullwidth);
         return sectionsDB.findOne({_id: this._id}, {fields: {fullwidth: 1}}).fullwidth;
+    },
+    bgColor: function () {
+        "use strict";
+        return sectionsDB.findOne({_id: this._id}, {fields: {"style.background-color": 1}}).style["background-color"];
+    }
+});
+
+Template.sectionOptions.events({
+    "change input.bg-color": function (event) {
+        "use strict";
+
+        var color = $(event.currentTarget).val();
+
+        if (validateColorHex.test(color)) {
+            console.log(this._id, color);
+            sectionsDB.update({_id: this._id}, {$set: {style: {"background-color": color}}});
+        }
     }
 });

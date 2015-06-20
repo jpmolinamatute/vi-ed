@@ -1,6 +1,6 @@
 <template name="section">
-    <section id="{{_id}}" class="sections" data-type="{{type}}" style="{{getstyle style}}">
-        <div class="section-body {{#if fullwidth}}container-fluid{{else}}container{{/if}}">
+    <section id="{{_id}}" class="sections" data-type="{{type}}" style="height: {{height}};">
+        <div class="section-body {{#if fullwidth}}container-fluid{{else}}container{{/if}}" style="{{getstyle style}}">
             {{# each myElements}}
                 {{> elements }}
             {{/each}}
@@ -22,6 +22,10 @@
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>
             </label>
+        </div>
+        <div class="form-group">
+            <label for="vied-section-bg-{{_id}}">Background Color:</label>
+            <input type="color" class="form-control bg-color" id="vied-section-bg-{{_id}}" value="{{bgColor}}">
         </div>
         <p>{{optID}}</p>
 

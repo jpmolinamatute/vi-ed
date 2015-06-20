@@ -9,7 +9,7 @@ div#vied-main {
 }
 
 div#vied-main {
-    background-color: #6DBDD6;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
 }

@@ -58,5 +58,9 @@ Template.toolbar.events({
         $("h4#vied-modal-title").text("General options");
         modalBody = Blaze.renderWithData(Template.generalopt, {_id: this._id}, $modal.find("div#vied-modal-body")[0]);
         $modal.modal("show");
+    },
+    "click button#vied-add-section": function () {
+        "use strict";
+        var index = sectionsDB.find({pageID: this._id}).count();
     }
 });
