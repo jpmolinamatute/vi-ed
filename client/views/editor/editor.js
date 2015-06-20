@@ -15,7 +15,7 @@ Template.editor.helpers({
             newSections = {
                 owner: Meteor.userId(),
                 created: new Date(),
-                type: "head",
+                type: "section-0",
                 pageID: id,
                 shown: true,
                 index: 0,
@@ -26,10 +26,10 @@ Template.editor.helpers({
             };
             if (!sectionsDB.find({pageID: id}).count()) {
                 sectionsDB.insert(newSections);
-                newSections.type = "body";
+                newSections.type = "section-1";
                 newSections.index = 1;
                 sectionsDB.insert(newSections);
-                newSections.type = "footer";
+                newSections.type = "section-2";
                 newSections.index = 2;
                 sectionsDB.insert(newSections);
             }

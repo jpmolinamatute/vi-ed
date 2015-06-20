@@ -1,4 +1,5 @@
 /* global eDefaultsDB: false*/
+/* global sectionsDB: false*/
 /* global modalBody: true*/
 Template.toolbar.onRendered(function () {
     "use strict";
@@ -62,5 +63,18 @@ Template.toolbar.events({
     "click button#vied-add-section": function () {
         "use strict";
         var index = sectionsDB.find({pageID: this._id}).count();
+        var newSections = {
+            owner: Meteor.userId(),
+            created: new Date(),
+            type: "section-" + index,
+            pageID: this._id,
+            shown: true,
+            index: index,
+            fullwidth: true,
+            sharedWith: [],
+            height: "400px",
+            style: {}
+        };
+        sectionsDB.insert(newSections);
     }
 });
