@@ -1,0 +1,24 @@
+<template name="generalopt">
+    <div id="vied-generalopt">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <button type="button" data-target="#vied-page-opt" aria-controls="vied-page-opt" role="tab"
+                        data-toggle="tab">{{title}}</button>
+            </li>
+
+            {{# each sectionOpt}}
+                <li role="presentation">
+                    <button type="button" data-target="#{{optID}}" aria-controls="{{optID}}" role="tab"
+                            data-toggle="tab">{{label}}</button>
+                </li>
+            {{/ each}}
+        </ul>
+
+        <div class="tab-content">
+            {{> editorOptions _id=_id}}
+            {{# each sectionOpt}}
+                {{> sectionOptions}}
+            {{/each}}
+        </div>
+    </div>
+</template>

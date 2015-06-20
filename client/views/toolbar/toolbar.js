@@ -1,4 +1,5 @@
-/* global eDefaultsDB:false*/
+/* global eDefaultsDB: false*/
+/* global modalBody: true*/
 Template.toolbar.onRendered(function () {
     "use strict";
     var tools = this.$("div.tools");
@@ -43,7 +44,7 @@ Template.toolbar.onRendered(function () {
 });
 
 Template.toolbar.helpers({
-    data: function(){
+    data: function () {
         "use strict";
         return eDefaultsDB.find({}, {fields: {type: 1, img: 1, label: 1}, sort: {_id: 1}});
     }
@@ -54,6 +55,8 @@ Template.toolbar.events({
         "use strict";
         var $modal = $("div#vied-modal");
         $modal.find("div.modal-dialog").addClass("modal-lg");
+        $("h4#vied-modal-title").text("General options");
+        modalBody = Blaze.renderWithData(Template.generalopt, {_id: this._id}, $modal.find("div#vied-modal-body")[0]);
         $modal.modal("show");
     }
 });

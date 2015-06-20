@@ -12,5 +12,19 @@
 </template>
 
 <template name="sectionOptions">
-    <div class="generalOption"></div>
+    <div id="{{optID}}" role="tabpanel" class="tab-pane fade">
+        <span>Full Width</span>
+
+        <div class="onoffswitch">
+            <input type="checkbox" name="fullwidth" class="onoffswitch-checkbox"
+                   id="full-width-{{_id}}" checked="{{# if checkfullwidth}}checked{{/if}}">
+            <label class="onoffswitch-label" for="full-width-{{_id}}">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        <p>{{optID}}</p>
+
+        <p>{{label}}</p>
+    </div>
 </template>

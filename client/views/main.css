@@ -13,3 +13,7 @@ div#vied-main {
     display: flex;
     flex-direction: column;
 }
+
+button:focus {
+    outline: 0;
+}

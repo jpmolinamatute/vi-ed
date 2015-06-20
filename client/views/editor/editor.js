@@ -23,7 +23,9 @@ Template.editor.helpers({
                     height: height + "px"
                 }
             };
-            if (!sectionsDB.find({pageID: id}).count()) {
+            if (!sectionsDB.find({
+                    pageID: id
+                }).count()) {
                 sectionsDB.insert(newSections);
                 newSections.type = "body";
                 newSections.index = 2;
@@ -32,7 +34,9 @@ Template.editor.helpers({
                 newSections.index = 3;
                 sectionsDB.insert(newSections);
             }
-            result = sectionsDB.find({pageID: id}).fetch();
+            result = sectionsDB.find({
+                pageID: id
+            }).fetch();
         }
 
         return result;
@@ -41,10 +45,23 @@ Template.editor.helpers({
         "use strict";
         var id = window.location.pathname.split("/editor/")[1];
         var result = "";
-        if (id && pagesDB.find({_id: id}).count()) {
-            result = pagesDB.findOne({_id: id}, {fields: {style: 1}}).style;
+        if (id && pagesDB.find({
+                _id: id
+            }).count()) {
+            result = pagesDB.findOne({
+                _id: id
+            }, {
+                fields: {
+                    style: 1
+                }
+            }).style;
         }
         return result;
+    },
+    id: function () {
+        "use strict";
+        var id = window.location.pathname.split("/editor/")[1];
+        return id ? id : false;
     }
 });
 
@@ -64,10 +81,14 @@ Template.registerHelper("getstyle", function (style) {
     return myStyles;
 });
 
-Template.editor.events({
-});
+Template.editor.events({});
 
 Template.editor.onRendered(function () {
+    "use strict";
+
+});
+
+Template.editorOptions.onCreated(function () {
     "use strict";
 
 });

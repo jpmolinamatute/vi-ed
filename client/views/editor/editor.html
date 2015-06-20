@@ -1,6 +1,6 @@
 <template name="editor">
     <div id="vied-toolbar-holder">
-        {{>toolbar}}
+        {{>toolbar _id=id}}
     </div>
     <div id="vied-editor" style="{{getstyle style}}">
         {{# each sections}}
@@ -22,10 +22,5 @@
 </template>
 
 <template name="editorOptions">
-    <div class="generalOption">
-        <div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb">
-            <input type="text" class="span2" value="">
-            <span class="add-on"><i style="background-color: rgb(255, 146, 180)"></i></span>
-        </div>
-    </div>
+    <div id="vied-page-opt" role="tabpanel" class="tab-pane fade in active">...</div>
 </template>

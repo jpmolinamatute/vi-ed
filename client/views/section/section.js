@@ -84,3 +84,19 @@ Template.section.events({
         elementsDB.update({"_id": currentActive}, {"$set": {"active": false}});
     }
 });
+
+Template.sectionOptions.events({
+    "change input[name='fullwidth']": function (event) {
+        "use strict";
+        var myBool = $(event.currentTarget).is(":checked");
+        sectionsDB.update({_id: this._id}, {$set: {"fullwidth": myBool}});
+    }
+});
+
+Template.sectionOptions.helpers({
+    checkfullwidth: function () {
+        "use strict";
+        console.log(sectionsDB.findOne({_id: this._id}, {fields: {fullwidth: 1}}).fullwidth);
+        return sectionsDB.findOne({_id: this._id}, {fields: {fullwidth: 1}}).fullwidth;
+    }
+});
