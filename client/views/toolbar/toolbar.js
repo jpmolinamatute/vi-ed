@@ -71,6 +71,7 @@ Template.toolbar.events({
             shown: true,
             index: index,
             fullwidth: true,
+            transparentbg: true,
             sharedWith: [],
             height: "400px",
             style: {}

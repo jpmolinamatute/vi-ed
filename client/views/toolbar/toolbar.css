@@ -14,3 +14,10 @@ ul#vied-toolbar li div {
     text-align: center;
 }
 
+div#vied-second-toolbar{
+    height: 20px;
+    width: 648px;
+    /*background-color: red;*/
+    margin: 0 auto;
+    display: none;
+}
