@@ -1,7 +1,9 @@
 <template name="elements">
 <div id={{_id}} class="element-container {{# if active}}element-active{{/if}}" data-type="{{type}}"
-         style="{{getstyle style}}">
-        <div class="element-toolbar">
+    style="{{getstyle style}}">
+
+    {{> Template.dynamic template=type}}
+    <div class="element-toolbar {{# if invisible}}hidden{{/if}}">
             <button type="button" class="btn btn-primary btn-xs remove">
                 <i class="fa fa-times"></i>
             </button>
@@ -14,17 +16,19 @@
             <button type="button" class="btn btn-primary btn-xs options">
                 <i class="fa fa-cog"></i>
             </button>
+        <button type="button" class="btn btn-primary btn-xs edit">
+            <i class="fa fa-pencil"></i>
+        </button>
         </div>
-        {{> Template.dynamic template=type}}
-        <div class="ui-resizable-handle ui-resizable-ne"></div>
-        <div class="ui-resizable-handle ui-resizable-n"></div>
-        <div class="ui-resizable-handle ui-resizable-nw"></div>
-        <div class="ui-resizable-handle ui-resizable-w"></div>
-        <div class="ui-resizable-handle ui-resizable-sw"></div>
-        <div class="ui-resizable-handle ui-resizable-s"></div>
-        <div class="ui-resizable-handle ui-resizable-se"></div>
-        <div class="ui-resizable-handle ui-resizable-e"></div>
-        <!--<div class="element-draggable"></div>-->
+    <div class="ui-resizable-handle ui-resizable-ne {{# if invisible}}hidden{{/if}}"></div>
+    <div class="ui-resizable-handle ui-resizable-n {{# if invisible}}hidden{{/if}}"></div>
+    <div class="ui-resizable-handle ui-resizable-nw {{# if invisible}}hidden{{/if}}"></div>
+    <div class="ui-resizable-handle ui-resizable-w {{# if invisible}}hidden{{/if}}"></div>
+    <div class="ui-resizable-handle ui-resizable-sw {{# if invisible}}hidden{{/if}}"></div>
+    <div class="ui-resizable-handle ui-resizable-s {{# if invisible}}hidden{{/if}}"></div>
+    <div class="ui-resizable-handle ui-resizable-se {{# if invisible}}hidden{{/if}}"></div>
+    <div class="ui-resizable-handle ui-resizable-e {{# if invisible}}hidden{{/if}}"></div>
+    <div class="element-draggable"></div>
     </div>
 </template>
 

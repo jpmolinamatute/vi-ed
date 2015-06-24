@@ -1,6 +1,7 @@
 /* global elementsDB: false*/
 /* global sectionsDB: false*/
 /* global eDefaultsDB: false*/
+/* global setElementActive: false*/
 /* global validateColorHex: false*/
 
 function getElementDefault(type) {
@@ -34,7 +35,7 @@ function setDroppable($sections) {
                         height: defaultValue.style.height,
                         top: top,
                         left: left,
-                        "z-index": "1"
+                        "z-index": 10
                     }
                 };
 
@@ -80,9 +81,16 @@ Template.section.helpers({
 Template.section.events({
     "click section.sections": function () {
         "use strict";
-
-        var currentActive = $("div#vied-editor").find("div.element-active").attr("id");
-        elementsDB.update({"_id": currentActive}, {"$set": {"active": false}});
+        console.log("section was reached!");
+        var id = elementsDB.findOne({"active": null}, {fields: {_id: 1}});
+        if (id) {
+            id = id._id;
+            $("div#" + id).find("div.element-draggable").css({
+                bottom: "3px",
+                right: "3px"
+            });
+        }
+        setElementActive(id);
     }
 });
 

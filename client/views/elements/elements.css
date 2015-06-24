@@ -1,11 +1,11 @@
 div.element-container {
-    /*border: black 1px solid;*/
     position: absolute;
 }
 
 div.element-container > div.element-toolbar {
     display: none;
     position: absolute;
+    top: 0;
     right: -24px;
     height: 100%;
     width: 24px;
@@ -20,8 +20,6 @@ div.element-container > div.element-toolbar > button.btn-xs {
 div.element-container:hover > div.element-toolbar {
     display: block;
 }
-
-/*div.element-active*/
 
 div.element-container > div.element-draggable {
     position: absolute;
