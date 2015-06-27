@@ -12,6 +12,12 @@ section.sections > div.section-body {
     background-color: transparent;
 }
 
+section.sections div.container-fluid,
+section.sections div.container {
+    padding-right: 0;
+    padding-left: 0;
+}
+
 section.sections > div.ui-resizable-s {
     position: absolute;
     padding: 1px 3px;

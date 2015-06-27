@@ -4,22 +4,24 @@
 
     {{> Template.dynamic template=type}}
     <div class="element-toolbar {{# if invisible}}hidden{{/if}}">
-            <button type="button" class="btn btn-primary btn-xs remove">
-                <i class="fa fa-times"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-xs copy">
-                <i class="fa fa-files-o"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-xs move">
-                <i class="fa fa-arrow-down"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-xs options">
-                <i class="fa fa-cog"></i>
-            </button>
-        <button type="button" class="btn btn-primary btn-xs edit">
-            <i class="fa fa-pencil"></i>
+        <button type="button" class="btn btn-primary btn-xs remove">
+            <i class="fa fa-times"></i>
         </button>
-        </div>
+        <button type="button" class="btn btn-primary btn-xs copy">
+            <i class="fa fa-files-o"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-xs move">
+            <i class="fa fa-arrow-down"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-xs options">
+            <i class="fa fa-cog"></i>
+        </button>
+        {{# if showEdit}}
+            <button type="button" class="btn btn-primary btn-xs edit">
+                <i class="fa fa-pencil"></i>
+            </button>
+        {{/if}}
+    </div>
     <div class="ui-resizable-handle ui-resizable-ne {{# if invisible}}hidden{{/if}}"></div>
     <div class="ui-resizable-handle ui-resizable-n  {{# if invisible}}hidden{{/if}}"></div>
     <div class="ui-resizable-handle ui-resizable-nw {{# if invisible}}hidden{{/if}}"></div>

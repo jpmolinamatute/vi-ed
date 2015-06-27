@@ -151,6 +151,10 @@ Template.elements.helpers({
     hideDraggableHandler: function () {
         "use strict";
         return this.active === null;
+    },
+    showEdit: function () {
+        "use strict";
+        return this.type === "texteditor";
     }
 });
 
@@ -160,18 +164,31 @@ Template.elements.events({
 
         event.stopPropagation();
     },
-    "click div.element-container div.element-draggable": function () {
+    "click div.element-container div.element-draggable": function (event) {
         "use strict";
 
         if (!this.active) {
             setElementActive(this._id);
         }
-
+        event.stopPropagation();
     },
     "click div.element-container div.element-toolbar button.edit": function (event) {
         "use strict";
 
-        elementsDB.update({"_id": this._id}, {$set: {active: null}});
+        var $mainToolbar = $("ul#vied-toolbar");
+        var $secondaryToolbar = $("div#vied-second-toolbar");
+        var elementId = this._id;
+        elementsDB.update({"_id": elementId}, {$set: {active: null}});
+        if (this.type === "texteditor") {
+            if ($mainToolbar.is(":visible") && !$secondaryToolbar.is(":visible")) {
+                $mainToolbar.hide("blind", {}, 50, function () {
+                    $secondaryToolbar.show("blind", {}, 50, function () {
+                        console.log($("div#texteditor-" + elementId), elementId);
+                        $("div#texteditor-" + elementId).focus();
+                    });
+                });
+            }
+        }
         event.stopPropagation();
     },
     "click div.element-container div.element-toolbar button.remove": function (event) {

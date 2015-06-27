@@ -4,12 +4,13 @@
 var editorManagerloaded = false;
 function createTEditor(id) {
     "use strict";
+    //auto_focus: "texteditor-" + id, since we are going to have many texteditor,
+    // and we don't know if the user is going to use them all we don't set this attribute
 
     var editorOpt = {
         inline: true,
         selector: "div#texteditor-" + id,
         theme: "modern",
-        auto_focus: "texteditor-" + id,
         fixed_toolbar_container: "div#vied-second-toolbar",
         visual: false,
         menubar: false,
@@ -32,7 +33,7 @@ function createTEditor(id) {
             "insertdatetime media nonbreaking save table contextmenu directionality",
             "emoticons template paste textcolor colorpicker textpattern"
         ],
-        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media | forecolor backcolor emoticons",
+        toolbar1: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | preview | forecolor backcolor emoticons",
         image_advtab: true
     };
     var $mainToolbar = $("ul#vied-toolbar");
@@ -43,8 +44,8 @@ function createTEditor(id) {
     ed.on("blur", function (e) {
         var myContent = ed.getContent();
         if (!$mainToolbar.is(":visible") && $secondaryToolbar.is(":visible")) {
-            $secondaryToolbar.hide("blind", {}, 500, function () {
-                $mainToolbar.show("blind", {}, 500);
+            $secondaryToolbar.hide("blind", {}, 50, function () {
+                $mainToolbar.show("blind", {}, 50);
             });
         }
 
@@ -57,11 +58,7 @@ function createTEditor(id) {
         e.stopPropagation();
     });
     ed.on("focus", function (e) {
-        if ($mainToolbar.is(":visible") && !$secondaryToolbar.is(":visible")) {
-            $mainToolbar.hide("blind", {}, 500, function () {
-                $secondaryToolbar.show("blind", {}, 500);
-            });
-        }
+
         e.stopPropagation();
     });
     ed.render();
