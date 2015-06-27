@@ -2,7 +2,7 @@ ul#vied-toolbar {
     list-style-type: none;
     padding: 0;
     margin: 0 auto;
-    height: 20px;
+    height: 35px;
     width: 238px;
 }
 
@@ -15,8 +15,8 @@ ul#vied-toolbar li div {
 }
 
 div#vied-second-toolbar{
-    height: 20px;
-    width: 648px;
+    height: 35px;
+    width: 894px;
     /*background-color: red;*/
     margin: 0 auto;
     display: none;

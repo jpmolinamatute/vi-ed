@@ -39,6 +39,10 @@ function setDroppable($sections) {
                     }
                 };
 
+                if (type === "texteditor") {
+                    element.content = "";
+                }
+
                 if (defaultValue.data) {
                     element.data = defaultValue.data;
                 }
@@ -74,7 +78,7 @@ Template.section.helpers({
     myElements: function () {
         "use strict";
 
-        return elementsDB.find({sectionID: this._id, shown: true}).fetch();
+        return elementsDB.find({sectionID: this._id, shown: true});
     }
 });
 

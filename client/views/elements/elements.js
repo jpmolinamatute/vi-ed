@@ -147,6 +147,10 @@ Template.elements.helpers({
     invisible: function () {
         "use strict";
         return !this.active;
+    },
+    hideDraggableHandler: function () {
+        "use strict";
+        return this.active === null;
     }
 });
 
@@ -167,13 +171,7 @@ Template.elements.events({
     "click div.element-container div.element-toolbar button.edit": function (event) {
         "use strict";
 
-        var $element = $("div#" + this._id);
         elementsDB.update({"_id": this._id}, {$set: {active: null}});
-        $element.find("div.element-draggable").css({
-            bottom: "100%",
-            right: "100%"
-        });
-        //removejQueryUIfromElement($element);
         event.stopPropagation();
     },
     "click div.element-container div.element-toolbar button.remove": function (event) {
