@@ -13,9 +13,6 @@ if (Meteor.settings &&
     driver._driver = new MongoInternals.RemoteCollectionDriver(Meteor.settings.mongodb);
     console.log("We are using remote collections");
 }
-
-console.log(Meteor.settings);
-
 elementsDB = new Mongo.Collection("elements", driver);
 sectionsDB = new Mongo.Collection("sections", driver);
 pagesDB = new Mongo.Collection("pages", driver);

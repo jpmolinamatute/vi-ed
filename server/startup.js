@@ -13,3 +13,7 @@
 //    console.log(id);
 //});
 
+console.log("===================================================");
+
+console.log(ServiceConfiguration.configurations.find().fetch());
+console.log("===================================================");
