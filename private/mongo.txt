@@ -1,0 +1,1 @@
+"mongodb": "mongodb://meteor:vzLA16378@ds043082.mongolab.com:43082/meteor",

@@ -6,15 +6,15 @@
 
 
 var driver = {};
-var mongo;
 
 if (Meteor.settings &&
     Meteor.settings.mongodb &&
-    Meteor.settings.localhost &&
     Meteor.isServer) {
-    mongo = new MongoInternals.RemoteCollectionDriver(Meteor.settings.mongodb);
-    driver._driver = mongo;
+    driver._driver = new MongoInternals.RemoteCollectionDriver(Meteor.settings.mongodb);
+    console.log("We are using remote collections");
 }
+
+console.log(Meteor.settings);
 
 elementsDB = new Mongo.Collection("elements", driver);
 sectionsDB = new Mongo.Collection("sections", driver);
