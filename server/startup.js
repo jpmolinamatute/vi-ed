@@ -12,8 +12,3 @@
 //    var id = ServiceConfiguration.configurations.upsert(query, update, {upsert: true});
 //    console.log(id);
 //});
-
-console.log("===================================================");
-
-console.log(ServiceConfiguration.configurations.find().fetch());
-console.log("===================================================");

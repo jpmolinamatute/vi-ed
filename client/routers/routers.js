@@ -34,7 +34,8 @@ Router.route("/editor");
 Router.route("/dashboard", function () {
     "use strict";
 
-    this.subscribe("pages");
+    this.subscribe("uploads");
+    this.subscribe("pages").wait();
     if (this.ready()) {
         this.render();
     } else {

@@ -24,3 +24,5 @@ github
 oauth1
 dburles:google-maps
 accounts-oauth
+tomi:upload-server
+tomi:upload-jquery

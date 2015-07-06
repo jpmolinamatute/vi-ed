@@ -2,6 +2,7 @@
 /*global sectionsDB: false*/
 /*global pagesDB: false*/
 /*global eDefaultsDB: false*/
+/*global uploadsDB: false*/
 
 var opt = {
     insert: function (userId) {
@@ -32,6 +33,19 @@ eDefaultsDB.allow({
 elementsDB.allow(opt);
 sectionsDB.allow(opt);
 pagesDB.allow(opt);
+uploadsDB.allow(opt);
+
+
+Meteor.publish("uploads", function () {
+    "use strict";
+
+    if (!this.userId) {
+        this.ready();
+    } else {
+        return uploadsDB.find();
+    }
+
+});
 
 Meteor.publish("elements", function () {
     "use strict";

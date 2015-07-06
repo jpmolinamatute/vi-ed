@@ -13,17 +13,23 @@
                 </div>
             </div>
             <div class="col-md-4 col-xs-4">
-                <button type="button" class="btn btn-primary" id="create-page-id">Create</button>
+                <button type="button" class="btn btn-primary" id="create-page-id" disabled>Create</button>
             </div>
             <div class="col-md-4 col-xs-4">
+                <label for="vied-pageslist">Select a Page</label>
                 <select id="vied-pageslist" class="form-control">
-                    <option value="none" selected>Select a Page</option>
+                    <option value="none" selected></option>
                     {{# each pages}}
                         <option value="{{_id}}">{{title}}</option>
                     {{/ each}}
                 </select>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <p>Upload all files you will use in your website</p>
+                {{> upload_bootstrap formData=specificFormData}}
+            </div>
+        </div>
     </div>
 </template>
