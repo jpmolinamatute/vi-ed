@@ -2,7 +2,6 @@
 /* global google: false*/
 /* global elementsDB: false*/
 /* global resizeMap: true*/
-var MyAPI = null;
 
 resizeMap = function (id) {
     "use strict";
@@ -40,15 +39,17 @@ Template.map.events({
 
 Template.map.onRendered(function () {
     "use strict";
-    if (!MyAPI) {
-        if (Meteor.settings &&
-            Meteor.settings.public &&
-            Meteor.settings.public.googleAPI) {
-            MyAPI = Meteor.settings.public.googleAPI;
-        }
-    }
+
     if (!GoogleMaps.loaded()) {
-        GoogleMaps.load({key: MyAPI});
+        Meteor.call("googleAPI", function(error, result){
+            if(error){
+                console.error(error);
+            }
+            if(result){
+                GoogleMaps.load({key: result});
+            }
+        });
+
     }
 });
 

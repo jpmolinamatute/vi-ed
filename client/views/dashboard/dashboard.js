@@ -1,5 +1,5 @@
 /* global pagesDB:false*/
-
+/* global S3:false*/
 
 Template.dashboard.events({
     "keydown input#vied-create-page":function(event){
@@ -42,35 +42,30 @@ Template.dashboard.events({
         "use strict";
         var $select = $(event.currentTarget);
         Router.go("/editor/" + $select.val());
+    },
+    "click button.upload": function(){
+        "use strict";
+
+        var files = $("input.file_bag")[0].files;
+
+        S3.upload({
+            files:files,
+            path: Meteor.userId()
+        },function(error, response){
+            if(error){
+                console.error(error);
+            }
+            if(response){
+                console.log(response);
+            }
+
+        });
     }
 });
 
 Template.dashboard.helpers({
     pages: function () {
         "use strict";
-
         return pagesDB.find({}, {fields: {title: 1}}).fetch();
-    },
-    specificFormData: function() {
-        "use strict";
-
-        return {
-            id: new Mongo.ObjectID(),
-            //other: this.other,
-            hard: "Lolcats",
-            userID: Meteor.userId()
-        };
     }
-});
-
-Template.dashboard.onCreated(function(){
-    "use strict";
-    Meteor.call("uploader");
-});
-
-
-Template.dashboard.onRendered(function(){
-    "use strict";
-    var $button = this.$(".btn-file"); //this is a temporary solution, please remove when UploadServer has been updated
-    $button.removeAttr("style");
 });

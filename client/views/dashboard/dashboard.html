@@ -28,7 +28,13 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <p>Upload all files you will use in your website</p>
-                {{> upload_bootstrap formData=specificFormData}}
+                <!--{{> upload_bootstrap formData=specificFormData}}-->
+                <input type="file" class="file_bag">
+                <button class="upload">Upload</button>
+
+                {{#each files}}
+                    <p>{{percent_uploaded}}</p>
+                {{/each}}
             </div>
         </div>
     </div>
