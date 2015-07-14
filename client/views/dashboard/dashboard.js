@@ -1,4 +1,5 @@
 /* global pagesDB:false*/
+/* global uploadsDB:false*/
 /* global S3:false*/
 
 Template.dashboard.events({
@@ -53,10 +54,11 @@ Template.dashboard.events({
             path: Meteor.userId()
         },function(error, response){
             if(error){
-                console.error(error);
+                console.error("ERROR: ", error);
             }
             if(response){
-                console.log(response);
+                response.owner = Meteor.userId();
+                uploadsDB.insert(response);
             }
 
         });
